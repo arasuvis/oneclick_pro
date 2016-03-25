@@ -48,7 +48,27 @@ class Property extends CI_Controller
 
 	public function add_movable_property()
 	{
+		$data = array(
+		'name' => $_POST['name'],
+		'comments' => $_POST['comments'],
+		'created_date' => date("Y-m-d H:i:s"),
+		'modified_date'=> date("Y-m-d H:i:s")
+		);
+
+		$this->load->model('property_model');
+		$result = $this->property_model->insert_mov_property($data);
+		if($result == true)
+		{
+			redirect('display_mov');
+		}
 		$this->load->view('user/movable_property');
+	}
+
+	public function display_mov_prop()
+	{
+		$this->load->model('property_model');
+		$data['mov_prop'] = $this->property_model->get_mov_prop_details();
+		$this->load->view('user/display_movable_property',$data);
 	}
 
 	/**** End Movable Property ****/

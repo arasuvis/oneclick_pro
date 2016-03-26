@@ -46,6 +46,11 @@ class Property extends CI_Controller
 
 	/**** Movable Property ****/
 
+	public function movable_form()
+	{
+		$this->load->view('user/movable_property');
+	}
+
 	public function add_movable_property()
 	{
 		$data = array(
@@ -61,7 +66,7 @@ class Property extends CI_Controller
 		{
 			redirect('display_mov');
 		}
-		$this->load->view('user/movable_property');
+		
 	}
 
 	public function display_mov_prop()

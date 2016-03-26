@@ -47,6 +47,7 @@ $route['property'] = "user/property";
 $route['add_immov'] = "user/property/add_immov_property";
 $route['display_immov'] = "user/property/display_immov_prop";
 
+$route['mov_form'] = "user/property/movable_form";
 $route['add_mov'] = "user/property/add_movable_property";
 $route['display_mov'] = "user/property/display_mov_prop";
 

@@ -4,8 +4,10 @@ class Property_model extends CI_Model {
     function __construct()
     {
         // Call the Model constructor
-        parent::__construct();	
+        parent::__construct();
     }
+
+    /*** Immovable property(Itemized view) ***/
 
     public function insert_immov_property($data)
     {
@@ -22,6 +24,10 @@ class Property_model extends CI_Model {
         return $sql->result();
     }
 
+    /** End Immovable Property(Itemized view) **/
+
+    /** Movable Property(Itemized view) **/
+
     public function insert_mov_property($data)
     {
         $sql = $this->db->insert('movable_propertys',$data);
@@ -35,5 +41,21 @@ class Property_model extends CI_Model {
     {
         $sql = $this->db->query("SELECT * FROM movable_propertys");
         return $sql->result();
+    }
+
+    /** End Movable Property **/
+
+    public function get_all_property()
+    {
+        $sql = $this->db->query("SELECT name FROM immovable_propertys");
+        $result = $sql->result();
+        return $result;
+    }
+
+    public function get_family_members()
+    {
+        $sql = $this->db->query("SELECT member_name FROM familys");
+        $result = $sql->result();
+        return $result;
     }
 }

@@ -1,6 +1,6 @@
 <a href="<?php echo base_url(); ?>property"><button >Add + </button></a>
 <table border="5" cellpadding="5px" cellspacing="5px">
-<th>Name</th>
+<th>Property Name</th>
 <th>Address</th>
 <th>Municipal Number</th>
 <th>Year Of Purchase</th>

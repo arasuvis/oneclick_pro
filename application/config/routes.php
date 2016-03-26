@@ -38,18 +38,21 @@
 |
 */
 
-$route['default_controller'] = "user/user";
+$route['default_controller'] = "users/user";
 $route['404_override'] = '';
 
 /*** Property routes ***/
 
-$route['property'] = "user/property";
-$route['add_immov'] = "user/property/add_immov_property";
-$route['display_immov'] = "user/property/display_immov_prop";
+$route['property'] = "users/property";
+$route['add_immov'] = "users/property/add_immov_property";
+$route['display_immov'] = "users/property/display_immov_prop";
 
-$route['mov_form'] = "user/property/movable_form";
-$route['add_mov'] = "user/property/add_movable_property";
-$route['display_mov'] = "user/property/display_mov_prop";
+$route['mov_form'] = "users/property/movable_form";
+$route['add_mov'] = "users/property/add_movable_property";
+$route['display_mov'] = "users/property/display_mov_prop";
+
+$route['property_list'] = "users/property/get_all_property_details";
+
 
 /*** End Property ***/
 

@@ -38,8 +38,17 @@
 |
 */
 
-$route['default_controller'] = "users/user";
+$route['default_controller'] = "user";
 $route['404_override'] = '';
+
+/*** User Registartion & login ***/
+
+$route['reg'] = "user/reg_details";
+$route['registration'] = "user/register";
+$route['user_login'] = "user/login";
+$route['credentials'] = "user/credentials";
+$route['logout'] = "user/logout";
+/*** End User Registration ***/
 
 /*** Property routes ***/
 

@@ -1,6 +1,6 @@
 <?php include('header.php'); ?>
-<div ="container">
-<form class="form-horizontal" method="post" action="reg_details">
+<div >
+<form class="form-horizontal" method="post" action="<?php echo base_url(); ?>reg">
 <fieldset>
 
 <!-- Form Name -->
@@ -8,8 +8,8 @@
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="text">First Name</label>  
-  <div class="col-md-4">
+  <label class="col-md-3 control-label" for="text">First Name</label>  
+  <div class="col-md-3">
   <input id="text" name="fname" type="text" placeholder="First Name" class="form-control input-md" required="" value="<?php echo set_value('fname') ?>">
    <?php echo form_error('fname'); ?> 
   </div>
@@ -17,8 +17,8 @@
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="text">Middle Name</label>  
-  <div class="col-md-4">
+  <label class="col-md-3 control-label" for="text">Middle Name</label>  
+  <div class="col-md-3">
   <input id="text" name="mname" type="text" placeholder="Middle Name" class="form-control input-md" required="" value="<?php echo set_value('mname') ?>">
   <?php echo form_error('mname'); ?> 
   </div>
@@ -26,8 +26,8 @@
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="text">Surname</label>  
-  <div class="col-md-4">
+  <label class="col-md-3 control-label" for="text">Surname</label>  
+  <div class="col-md-3">
   <input id="text" name="surname" type="text" placeholder="Surname" class="form-control input-md" required="" value="<?php echo set_value('surname') ?>">
   <?php echo form_error('surname'); ?>  
   </div>
@@ -35,8 +35,8 @@
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="email">Email Id</label>  
-  <div class="col-md-5">
+  <label class="col-md-3 control-label" for="email">Email Id</label>  
+  <div class="col-md-3">
   <input id="email" name="email" type="text" placeholder="Email Id" class="form-control input-md" required="" value="<?php echo set_value('email') ?>">
 <?php echo form_error('email'); ?> 
   </div>
@@ -44,8 +44,8 @@
 
 <!-- Password input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="password">Password </label>
-  <div class="col-md-5">
+  <label class="col-md-3 control-label" for="password">Password </label>
+  <div class="col-md-3">
     <input id="password" name="password" type="password" placeholder="Password " class="form-control input-md" required="" value="<?php echo set_value('password') ?>">
   <?php echo form_error('password'); ?> 
   </div>
@@ -53,8 +53,8 @@
 
 <!-- Password input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="password">Confirm Password </label>
-  <div class="col-md-5">
+  <label class="col-md-3 control-label" for="password">Confirm Password </label>
+  <div class="col-md-3">
     <input id="password" name="confirm_password" type="password" placeholder="Confirm Password " class="form-control input-md" required="" value="<?php echo set_value('confirm_password') ?>">
    <?php echo form_error('confirm_password'); ?> 
   </div>
@@ -62,8 +62,8 @@
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="number">Age</label>  
-  <div class="col-md-4">
+  <label class="col-md-3 control-label" for="number">Age</label>  
+  <div class="col-md-3">
   <input id="number" name="age" type="text" placeholder="Age" class="form-control input-md" required="" value="<?php echo set_value('age') ?>">
     <?php echo form_error('age'); ?>  
   </div>
@@ -71,8 +71,8 @@
 
 <!-- Multiple Radios (inline) -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="radios">Gender</label>
-  <div class="col-md-4"> 
+  <label class="col-md-3 control-label" for="radios">Gender</label>
+  <div class="col-md-3"> 
     <label class="radio-inline" for="radios-0">
       <input type="radio" name="gender" id="radios-0" value="M" checked="checked">
       Male
@@ -90,16 +90,16 @@
 
 <!-- Textarea -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="textarea">Address</label>
-  <div class="col-md-4">                     
+  <label class="col-md-3 control-label" for="textarea">Address</label>
+  <div class="col-md-3">                     
     <textarea class="form-control" id="textarea" name="address" placeholder="Enter Address" value="<?php echo set_value('address') ?>"> </textarea>
   </div>
 </div>
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="number">Mobile Number</label>  
-  <div class="col-md-5">
+  <label class="col-md-3 control-label" for="number">Mobile Number</label>  
+  <div class="col-md-3">
   <input id="number" name="mobile" type="text" placeholder="Mobile Number" class="form-control input-md" required="" value="<?php echo set_value('mobile') ?>">
    <?php echo form_error('mobile'); ?> 
   </div>
@@ -107,8 +107,8 @@
 
 <!-- Button -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="singlebutton"></label>
-  <div class="col-md-4">
+  <label class="col-md-3 control-label" for="singlebutton"></label>
+  <div class="col-md-3">
     <button id="singlebutton" name="singlebutton" class="btn btn-primary">Submit</button>
   </div>
 </div>
@@ -117,7 +117,7 @@
 </form>
 </div>
 
-<a href = "<?php echo base_url('user') ?>" >Home</a>
+<a href = "<?php echo base_url() ?>" >Home</a>
 
 <?php include('footer.php'); ?>
 

@@ -1,48 +1,57 @@
-<?php include('header.php'); ?>
- 
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Home Page</a>
-    </div>
+<?php
+if (isset($this->session->userdata['logged_in'])) {
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-      <ul class="nav navbar-nav">
-      
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
-      </ul>
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="<?php echo base_url('user/login'); ?>">Login</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="<?php echo base_url('user/register'); ?> ">SigIn</a></li>
-      </ul>
-      
+header("location: http://localhost/oneclick/trunk/credentials");
+}
+?>
+<link rel="Stylesheet" type="text/css" href="<?php echo base_url('css/bootstrap.min.css');?>">  
+
+<style>
+  .login-text{
+    
+    color: #286090;
+  }
+
+</style>
+
+<div class="container">
+<form class="form-horizontal" method="post" action="<?php echo base_url(); ?>credentials">
+  <fieldset>
+  <!-- Form Name -->
+  <legend class="login-text">Login Form</legend>
+
+  <!-- Text input-->
+  <div class="form-group">
+    <label class="col-md-1 control-label" for="text">Email Id</label>  
+      <div class="col-md-4">
+        <input id="text" name="email" type="text" placeholder="Enter Email Id" class="form-control input-md" required="" value="<?php echo set_value('email') ?>">
+      </div>
+  </div>
+
+  <!-- Password input-->
+  <div class="form-group">
+    <label class="col-md-1 control-label" for="password">Password </label>
+    <div class="col-md-4">
+      <input id="password" name="password" type="password" placeholder="Enter Password " class="form-control input-md" required="">
     </div>
   </div>
-</nav>
 
+  <!-- Button (Double) -->
+  <div class="form-group">
+    <label class="col-md-6 control-label" for="button1id"></label>
+    <div class="col-md-12">
+      <button name="submit" class="btn btn-primary">Submit</button>
+      <button name="reset" class="btn btn-primary">Cancel</button>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-6 control-label" for="button1id"></label>
+    <div class="col-md-12">
+      <a href="<?php echo base_url('user/forgot') ?>">Forgot Password</a>
+    </div>
+  </div>
+  </fieldset>
+</form>
+</div>
 <?php include('footer.php'); ?>

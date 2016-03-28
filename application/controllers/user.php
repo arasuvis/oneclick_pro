@@ -13,6 +13,7 @@ class User extends CI_Controller
 
 	function index()
 	{
+		
 		$this->load->view('homepage');
 	}
 
@@ -57,6 +58,7 @@ class User extends CI_Controller
 						);
 
 		$this->load->model('user_model');
+
 		if($this->user_model->save_reg($data))
 		{
 			$this->load->view('homepage');
@@ -83,7 +85,7 @@ class User extends CI_Controller
 
 		if($this->form_validation->run() == False)
 		{
-			$this->load->view('login_view');
+			$this->load->view('homepage');
 		}
 		else
 		{
@@ -94,19 +96,33 @@ class User extends CI_Controller
 			$log_id = $this->user_model->login_valid($email,$password);
 			if($log_id)
 			{
+					$data = array(
+					'email' => $email,	
+					'is_userlogged_in' => $log_id);
+					$this->session->set_userdata('is_userlogged_in', $data);
+				//$pass = $this->session->set_userdata('id',$log_id);
+				
+				 if(isset($this->session->userdata['is_userlogged_in']['email']) )  
+				 { 
 
-				$pass = $this->session->set_userdata('id',$log_id);
-			
-				$this->load->view('user_page',$pass,$email);
-			}
+				$this->load->view('user_page');
+				}
+		}
 			else
 			{
-				//if returns False
-				$this->load->view('login_view');
-				echo "Password Invalid";
+				
+				$this->load->view('homepage');
+				echo "<span style='color:red'>Password Invalid</span>";
 			}
 		}
 	}
+
+	function logout()
+	{
+		$this->session->sess_destroy();
+		redirect(base_url());	
+	}
+
 
 	function forgot()
 	{

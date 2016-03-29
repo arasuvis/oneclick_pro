@@ -93,7 +93,11 @@ class User extends CI_Controller
 			$password = $this->input->post('password');
 
 			$this->load->model('user_model');
+			
+			//print_r($_POST);die();
+			
 			$log_id = $this->user_model->login_valid($email,$password);
+			
 			if($log_id)
 			{
 					$data = array(

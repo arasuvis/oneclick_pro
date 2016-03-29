@@ -1,3 +1,5 @@
+<?php include("header.php"); ?>
+
 <a href="<?php echo base_url(); ?>property"><button >Add + </button></a>
 <table border="5" cellpadding="5px" cellspacing="5px">
 <th>Property Name</th>
@@ -18,3 +20,5 @@
 </tr>
 <?php } ?>
 </table>
+
+<?php include("footer.php"); ?>

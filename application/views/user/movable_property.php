@@ -1,3 +1,4 @@
+<?php include('header.php'); ?>
 
 <form id="property" class="property" method="POST" action="<?php echo base_url(); ?>add_mov">
 	<label>Name</label>&nbsp;
@@ -8,3 +9,5 @@
 	
 	<input type="submit" value="submit" >
 </form>
+
+<?php include("footer.php"); ?>

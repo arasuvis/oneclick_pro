@@ -1,3 +1,4 @@
+<?php include('header.php'); ?>
 
 <style type="text/css">
 	input[type=number] {-moz-appearance: textfield;}
@@ -140,3 +141,6 @@ function addition()
 
 
 </script>
+
+
+<?php include("footer.php"); ?>

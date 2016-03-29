@@ -1,4 +1,5 @@
-<?php include('header.php'); ?>
+<link rel = "Stylesheet" type="text/css" href="<?php  echo base_url('css/bootstrap.min.css'); ?>" > 
+
 <div >
 <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>reg">
 <fieldset>

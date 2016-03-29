@@ -65,5 +65,11 @@ $route['property_list'] = "users/property/get_all_property_details";
 
 /*** End Property ***/
 
+
+/*** Family routes ***/
+
+$route['family'] = "users/family";
+
+/*** End Property ***/
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

@@ -54,7 +54,7 @@ class Property_model extends CI_Model {
 
     public function get_family_members()
     {
-        $sql = $this->db->query("SELECT member_id,member_name FROM familys");
+        $sql = $this->db->query("SELECT * FROM familys");
         $result = $sql->result();
         return $result;
     }

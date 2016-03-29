@@ -10,7 +10,10 @@ class Family extends CI_Controller
 	/**** Start Login ****/
 
 	public function index()
-	{
-		$this->load->view('welcome_message');
+	{	//echo "<pre>";
+		//print_r($this->config);
+		$tree = $this->config->item('jtree_url');
+		$data['tree_url'] = $tree;
+		$this->load->view('family/index',$data);
 	}
 }

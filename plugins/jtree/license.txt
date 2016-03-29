@@ -1,0 +1,73 @@
+JTree Applet
+Enterprise Application Edition
+LICENSE 
+1. LIMITED LICENSE GRANT. 
+
+Scand LLC grants to you ("Licensee") a nonexclusive, nontransferable, worldwide, royalty-free license to use this binary version of the JTree applet (the "Software").
+
+The Licensee has the right to use the software according to the appropriate version and edition he obtained.
+
+When referred to a site, a site means a location where all the web pages share a single fully qualified domain name.
+
+a) specific restrictions
+
+The licensee is not permitted to expose, either directly or indirectly, any API that allows programmatic access to the class libraries.
+
+The licensee is not permitted to distribute the applets in any fashion which would promote, encourage or allow reuse or redistribution of the applet.
+
+b) general restrictions
+
+Software may not be transferred, leased, assigned, or sublicensed, in whole or in part.
+
+IF THESE RESTRICTIONS ARE NOT ALLOWED BY YOUR RESPECTIVE LAW THEN CONTACT SCAND LLC TO CHECK IF THE RESTRICTIONS CAN BE RELAXED IN YOUR CASE. THE RELAXATION CAN ONLY BE GIVEN BY WRITTEN CONSENT.
+
+c) disclaimer of warranty
+
+The Software is provided "AS IS," without a warranty of any kind.
+
+ALL EXPRESS OR IMPLIED REPRESENTATIONS AND WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY EXCLUDED.
+
+IF THIS DISCLAIMER IS NOT ALLOWED BY YOUR RESPECTIVE LAW THEN CONTACT SCAND LLC TO CHECK IF THE DISCLAIMER CAN BE RELAXED IN YOUR CASE. THE RELAXATION CAN ONLY BE GIVEN BY WRITTEN CONSENT.
+
+d) limitation of liability.
+
+IN NO EVENT WILL SCAND LLC BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR PUNITIVE DAMAGES HOWEVER CAUSED AND REGARDLESS OF THEORY OF LIABILITY ARISING OUT OF THE USE OF, INABILITY TO USE OR DOWNLOADING OF THE SOFTWARE, EVEN IF SCAND LLC HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+IF THIS LIMITATION IS NOT ALLOWED BY YOUR RESPECTIVE LAW THEN CONTACT SCAND LLC TO CHECK IF THE LIMITATION CAN BE RELAXED IN YOUR CASE. THE RELAXATION CAN ONLY BE GIVEN BY WRITTEN CONSENT.
+
+2. EDITIONS
+The conditions of the specific editions extend the general license.
+
+a) free edition
+
+The Licensee has the right to use the software at no cost if ALL the following conditions are met.
+
+if it is used for NON-COMMERCIAL USE 
+every use that has no direct or indirect commercial use, even it is not profitable 
+if it is used by PRIVATE PERSONS 
+the free edition only applies if used by individuals (physical persons) 
+ALL CONDITIONS MUST BE MET AT THE SAME TIME
+
+b) advanced edition
+
+The Licensee has the right to use the software if ALL of the following conditions are met:
+
+for use within one company 
+for use within one application 
+support is restricted for 12 months from date of purchase and consists of support of only described on the http://treetable.com features corresponding to the advanced version. Support doesn't assume any change requests or further development of the applet. 
+ALL CONDITIONS MUST BE MET AT THE SAME TIME
+
+IF THESE RESTRICTIONS ARE NOT ALLOWED BY YOUR RESPECTIVE LAW THEN CONTACT SCAND LLC TO CHECK IF THE RESTRICTIONS CAN BE RELAXED IN YOUR CASE.
+
+3. COPYRIGHT
+SCAND LLC and its licensors retain all ownership rights to the software and related documentation. Use of the software and related documentation is governed by the license agreement accompanying the software and applicable copyright law.
+
+The documentation must always follow the related software. Making unauthorized copies, adaptations, or compilation works is prohibited. SCAND LLC may revise this documentation from time to time without notice.
+
+THIS DOCUMENTATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND. IN NO EVENT SHALL SCAND LLC BE LIABLE FOR ANY LOSS OF PROFITS, LOSS OF BUSINESS, LOSS OF USE OR DATA, INTERRUPTION OF BUSINESS, OR FOR INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES OF ANY KIND, ARISING FROM ANY ERROR IN THIS DOCUMENTATION.
+
+This means that the software and documentation come with no warranty, without any limitation. No liability of any kind can be accepted and this the fullest extent. If your law doesn't allow this, then do not use this software and documentation. 
+
+The Software and documentation are copyright c 1996-2000 Scand LLC. All rights reserved.
+
+Scand LLC, c 1998-2001, 12260 Willow Grove Rd., 2, Camden, DE 19934, USA

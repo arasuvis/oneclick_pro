@@ -37,7 +37,7 @@
 <div class="form-group">
   <label class="col-md-3 control-label" for="email">Email Id</label>  
   <div class="col-md-3">
-  <input id="email" name="email" type="text" placeholder="Email Id" class="form-control input-md" required="" value="<?php echo set_value('email') ?>">
+  <input id="email" name="email" type="email" placeholder="Email Id" class="form-control input-md" required="" value="<?php echo set_value('email') ?>">
 <?php echo form_error('email'); ?> 
   </div>
 </div>

@@ -17,6 +17,8 @@ class Property extends CI_Controller
 	public function add_immov_property()
 	{
 		$data = array(
+		//'user_id' => $_POST['user_id'],
+		'user_id' => 3,
 		'name' => $_POST['name'],
 		'address' => $_POST['address'],
 		'municipal_number' => $_POST['municipal_number'],
@@ -84,7 +86,7 @@ class Property extends CI_Controller
 	{
 		$this->load->model('property_model');
 		$data['property'] = $this->property_model->get_all_property();
-		$data['family'] = $this->property_model->get_family_members();
+		$data['family'] = $this->property_model->get_family_members();		
 		$this->load->view('user/property_allocation',$data);
 	}
 

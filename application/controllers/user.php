@@ -13,7 +13,6 @@ class User extends CI_Controller
 
 	function index()
 	{
-		
 		$this->load->view('homepage');
 	}
 
@@ -75,9 +74,14 @@ class User extends CI_Controller
 		$this->load->view('login_view');
 	}
 
+	function dashboard()
+	{
+		$this->load->view('user_page');
+	}
 	
 	function credentials()
 	{
+
 		$this->form_validation->set_rules('email','Email Id','trim|required|valid_email');
 		$this->form_validation->set_rules('password','Password','trim|required');
 				
@@ -89,42 +93,41 @@ class User extends CI_Controller
 		}
 		else
 		{
+			
 			$email = $this->input->post('email');
 			$password = $this->input->post('password');
 
 			$this->load->model('user_model');
+						
+			$log_email = $this->user_model->login_valid($email,$password);
 			
-			//print_r($_POST);die();
-			
-			$log_id = $this->user_model->login_valid($email,$password);
-			
-			if($log_id)
-			{
-					$data = array(
-					'email' => $email,	
-					'is_userlogged_in' => $log_id);
-					$this->session->set_userdata('is_userlogged_in', $data);
-				//$pass = $this->session->set_userdata('id',$log_id);
-				
-				 if(isset($this->session->userdata['is_userlogged_in']['email']) )  
-				 { 
+			//echo "<pre>";print_r($log_id);die();
 
-				$this->load->view('user_page');
-				}
-		}
-			else
+			if(!empty($log_email))
 			{
-				
-				$this->load->view('homepage');
-				echo "<span style='color:red'>Password Invalid</span>";
+
+				$data = array(
+				'email' => $email,	
+				'is_userlogged_in' => $log_email);
+				$this->session->set_userdata('is_userlogged_in', $data);
+				//$pass = $this->session->set_userdata('id',$log_id);
+				$this->dashboard();
+			}
+			else if($log_email == false)
+			{
+				$msg['error'] = "Username or Password is Invalid";
+				$this->load->view('homepage',$msg);
 			}
 		}
 	}
 
 	function logout()
 	{
-		$this->session->sess_destroy();
-		redirect(base_url());	
+		$sess_array = array(
+		'email' => ''
+		);
+		$this->session->unset_userdata('is_userlogged_in', $sess_array);
+		$this->load->view('homepage');	
 	}
 
 

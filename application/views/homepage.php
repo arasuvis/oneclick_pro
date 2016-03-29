@@ -1,9 +1,10 @@
 <?php //include('header.php'); ?>
 
 <?php
-if (isset($this->session->userdata['logged_in'])) {
+//print_r($this->session->userdata['is_userlogged_in']);die();
+if (isset($this->session->userdata['is_userlogged_in'])) {
 
-header("location: http://localhost/oneclick/trunk/credentials");
+header("location: dashboard");
 }
 ?>
 <link rel="Stylesheet" type="text/css" href="<?php echo base_url('css/bootstrap.min.css');?>">  
@@ -15,11 +16,16 @@ header("location: http://localhost/oneclick/trunk/credentials");
   }
 
 </style>
-
+  
 <div class="container">
 <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>credentials">
+
   <fieldset>
   <!-- Form Name -->
+  <?php
+  if (isset($error)){
+    echo "<div style='color:red;text-align:left'>$error</div>";
+  } ?>
   <legend class="login-text">Login Form</legend>
 
   <!-- Text input-->

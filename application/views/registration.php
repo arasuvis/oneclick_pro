@@ -12,7 +12,7 @@
   <label class="col-md-3 control-label" for="text">First Name</label>  
   <div class="col-md-3">
   <input id="text" name="fname" type="text" placeholder="First Name" class="form-control input-md" required="" value="<?php echo set_value('fname') ?>">
-   <?php echo form_error('fname'); ?> 
+   <?php echo form_error('fname'); ?>
   </div>
 </div>
 

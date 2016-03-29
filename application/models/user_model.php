@@ -22,10 +22,10 @@ class User_model extends CI_Model
 		$pass = md5($password);
 		$sql = "Select * from user_register where email='$email' and password='$pass' ";
 		$res = $this->db->query($sql);
-		if($res->num_rows)
+		$result = $res->result();
+		if(!empty($result))
 		{
-			
-			return $res->row()->user_id;
+			return $result[0]->email;	
 		}
 		else
 		{

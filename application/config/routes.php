@@ -48,6 +48,7 @@ $route['registration'] = "user/register";
 $route['user_login'] = "user/login";
 $route['credentials'] = "user/credentials";
 $route['logout'] = "user/logout";
+$route['dashboard'] = "user/dashboard";
 /*** End User Registration ***/
 
 /*** Property routes ***/

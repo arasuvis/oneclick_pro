@@ -7,8 +7,6 @@ class Family extends CI_Controller
 		parent::__construct();
 	}
 
-	/**** Start Login ****/
-
 	public function index()
 	{	//echo "<pre>";
 		//print_r($this->config);

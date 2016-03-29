@@ -2,9 +2,12 @@
 
 class Property extends CI_Controller 
 {
+	
+
 	public function Property() // Constructor
 	{
 		parent::__construct();
+		$this->load->library(array('table','form_validation'));
 	}
 
 	/**** Immovable Property(Itemized view) ****/
@@ -37,10 +40,34 @@ class Property extends CI_Controller
 		}
 	}
 
-	public function display_immov_prop()
+	public function display_immov_prop($offset = 0)
 	{
+		$this->load->library('table');
+		
+		$tmpl = array ( 
+		'table_open' => '<table border="1" cellpadding="2" cellspacing="1" id="example1" 
+		class="table table-striped table-bordered">' );
+		
+		$this->table->set_template($tmpl);
+
 		$this->load->model('property_model');
 		$data['imv_prop'] = $this->property_model->get_immov_prop_details();
+
+		$this->table->set_heading(
+		'No', 'Name', 'Address', 'Municipal Number', 'Year Of Purchase', 
+		'Area','Nature Of Ownership', 'Actions');
+		$i = 0 + $offset;
+		foreach ($data['imv_prop'] as $person)
+		{
+			$this->table->add_row(++$i, $person->name, $person->address, $person->municipal_number, 
+				$person->year_of_purchase, $person->area, $person->nature_of_ownership,
+				anchor('person/view/'.$person->Immovable_id,'view',array('class'=>'view','data-toggle'=>'modal','data-target'=>'#myModal')).' '.
+				anchor('person/update/'.$person->Immovable_id,'update',array('class'=>'update','data-toggle'=>'modal','data-target'=>'#myModal')).' '.
+				anchor('person/delete/'.$person->Immovable_id,'delete',array('class'=>'delete','onclick'=>"return confirm('Are you sure want to delete this person?')"))
+			);
+		}
+		$data['table'] = $this->table->generate();
+
 		$this->load->view('user/display_immovable_property',$data);
 	}
 
@@ -73,6 +100,7 @@ class Property extends CI_Controller
 
 	public function display_mov_prop()
 	{
+
 		$this->load->model('property_model');
 		$data['mov_prop'] = $this->property_model->get_mov_prop_details();
 		$this->load->view('user/display_movable_property',$data);

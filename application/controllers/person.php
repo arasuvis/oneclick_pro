@@ -42,7 +42,7 @@ class Person extends CI_Controller {
 		    $tmpl = array ( 'table_open'  => 
 '<table border="1" cellpadding="2" cellspacing="1" id="example1" class="table table-striped table-bordered">' );
 
-    $this->table->set_template($tmpl); 
+    $this->table->set_template($tmpl);
 
 		$this->table->set_heading('No', 'Name', 'Gender', 'Date of Birth (dd-mm-yyyy)', 'Actions');
 		$i = 0 + $offset;

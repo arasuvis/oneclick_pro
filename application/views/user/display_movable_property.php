@@ -1,3 +1,10 @@
+<?php
+//print_r($this->session->userdata['is_userlogged_in']);die();
+if (!isset($this->session->userdata['is_userlogged_in'])) {
+
+header("location: dashboard");
+}
+?>
 <?php include('header.php'); ?>
 
 <a href="<?php echo base_url(); ?>mov_form"><button >Add + </button></a>

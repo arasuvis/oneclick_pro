@@ -76,7 +76,14 @@ class User extends CI_Controller
 
 	function dashboard()
 	{
-		$this->load->view('user_page');
+		if (isset($this->session->userdata['is_userlogged_in'])) 
+		{
+			$this->load->view('user_page');
+		}
+		else
+		{
+			$this->index();
+		}
 	}
 	
 	function credentials()

@@ -2,6 +2,19 @@
 <head>
 <title></title>
 <link rel = "Stylesheet" type="text/css" href="<?php  echo base_url('css/bootstrap.min.css'); ?>" > 
+<link href="<?php echo base_url(); ?>css/bootstrap.min.css" rel="stylesheet">
+<link href="<?php echo base_url(); ?>res/css/style.css" rel="stylesheet">
+<link rel="stylesheet" href="<?php echo base_url(); ?>plugins/datatables/css/jquery.dataTables.min.css">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="<?php echo base_url(); ?>css/font-awesome.min.css">
+<!-- Ionicons -->
+<link rel="stylesheet" href="<?php echo base_url(); ?>css/ionicons.min.css">
+  
+<link rel="stylesheet" href="<?php echo base_url(); ?>plugins/datatables/css/buttons.dataTables.min.css">
+<link rel="stylesheet" href="<?php echo base_url(); ?>/css/bootstrap.min.css">
+<script src="<?php echo base_url(); ?>js/jquery.min.js"></script>
+<script src="<?php echo base_url(); ?>js/bootstrap.min.js"></script>
 
 </head>
 <body>

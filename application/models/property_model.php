@@ -58,4 +58,9 @@ class Property_model extends CI_Model {
         $result = $sql->result();
         return $result;
     }
+	
+	public function get_by_id($id){
+		$this->db->where('Immovable_id', $id);
+		return $this->db->get('immovable_propertys');
+	}
 }

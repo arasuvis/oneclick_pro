@@ -29,6 +29,7 @@ class Person_model extends CI_Model {
 	
 	function save($person){
 		$this->db->insert($this->tbl_person, $person);
+		
 		return $this->db->insert_id();
 	}
 	

@@ -1,3 +1,5 @@
+<?php include("header.php"); ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -48,11 +50,11 @@
     	</div>
   	</div>
 	</div>
-
-	<div class="text-right">
-	<a href="http://localhost/oneclick/trunk/person/add" class="btn btn-lg btn-primary text-right" data-toggle="modal" data-target="#myModal">Add Property</a>
-	</div>
-	<br />
+<div class="text-right">
+<a href="<?php base_url(); ?>property_add" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal">
+Add Property</a>
+<?php //echo anchor('property/add/','Add Property',array('class'=>'btn btn-lg btn-primary text-right','data-toggle'=>'modal','data-target'=>'#myModal')); ?></div>
+			<br />
 
 	<div class="data"><?php echo $table; ?></div>
 

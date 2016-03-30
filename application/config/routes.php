@@ -64,6 +64,7 @@ $route['display_mov'] = "users/property/display_mov_prop";
 
 $route['property_list'] = "users/property/get_all_property_details";
 
+$route['property_add'] = "users/property/add"
 
 /*** End Property ***/
 

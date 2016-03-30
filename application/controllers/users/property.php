@@ -40,6 +40,24 @@ class Property extends CI_Controller
 		}
 	}
 
+
+	public function add()
+	{
+		// set empty default form field values
+		$this->_set_fields();
+		// set validation properties
+		$this->_set_rules();
+		
+		// set common properties
+		$data['title'] = 'Add Property';
+		$data['message'] = '';
+		$data['action'] = base_url('property/addproperty');
+		$data['link_back'] = anchor('property/index/','Back to list of persons',array('class'=>'back'));
+	
+		// load view
+		$this->load->view('user/immovable_property', $data);
+	}
+
 	public function display_immov_prop($offset = 0)
 	{
 		$this->load->library('table');

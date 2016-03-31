@@ -18,9 +18,7 @@ class User extends CI_Controller
 
 	function register()
 	{
-		
 		$this->load->view('registration');
-		//print_r($_POST); die();
 	}
 
 	function reg_details()
@@ -28,7 +26,7 @@ class User extends CI_Controller
 		$this->form_validation->set_rules('fname','First Name','trim|required|alpha');
 		$this->form_validation->set_rules('mname','Middle Name','trim|required');
 		$this->form_validation->set_rules('surname','Surname','trim|required');
-		$this->form_validation->set_rules('email','Email Id','trim|required|valid_email|	is_unique[user_register.email]');
+		$this->form_validation->set_rules('email','Email Id','trim|required|valid_email|is_unique[user_register.email]');
 		$this->form_validation->set_rules('password','Password','trim|required');
 		$this->form_validation->set_rules('confirm_password','Confirm Password','trim|required|matches[password]');
 		$this->form_validation->set_rules('age','Age','trim|required|integer');
@@ -100,27 +98,23 @@ class User extends CI_Controller
 		}
 		else
 		{
-			
 			$email = $this->input->post('email');
 			$password = $this->input->post('password');
 
 			$this->load->model('user_model');
 						
-			$log_email = $this->user_model->login_valid($email,$password);
-			
-			//echo "<pre>";print_r($log_id);die();
+			$log_id = $this->user_model->login_valid($email,$password);
 
-			if(!empty($log_email))
+			if(!empty($log_id))
 			{
 
 				$data = array(
 				'email' => $email,	
-				'is_userlogged_in' => $log_email);
+				'is_userlogged_in' => $log_id);
 				$this->session->set_userdata('is_userlogged_in', $data);
-				//$pass = $this->session->set_userdata('id',$log_id);
 				$this->dashboard();
 			}
-			else if($log_email == false)
+			else if($log_id == false)
 			{
 				$msg['error'] = "Username or Password is Invalid";
 				$this->load->view('homepage',$msg);

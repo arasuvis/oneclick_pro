@@ -25,7 +25,7 @@ class User_model extends CI_Model
 		$result = $res->result();
 		if(!empty($result))
 		{
-			return $result[0]->email;	
+			return $result[0]->user_id;	
 		}
 		else
 		{

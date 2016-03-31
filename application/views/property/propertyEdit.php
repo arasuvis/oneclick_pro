@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>SIMPLE CRUD APPLICATION</title>
+
+<link href="<?php echo base_url(); ?>res/css/style.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+	<div class="content">
+		<h1><?php echo $title; ?></h1>
+		<?php echo $message; ?>
+		<form method="post" action="<?php echo $action; ?>">
+		<div class="data">
+		<table>
+			
+			<input type="hidden" name="id" value="<?php echo set_value('id',$this->form_data->id); ?>"/>
+			<tr>
+				<td valign="top">Name<span style="color:red;">*</span></td>
+				<td><input type="text" name="name" class="text" value="<?php echo set_value('name',$this->form_data->name); ?>"/>
+<?php echo form_error('name'); ?>
+				</td>
+			</tr>
+			<tr>
+				<td valign="top">Address<span style="color:red;">*</span></td>
+				<td><input type="text" name="address" class="text" value="<?php echo set_value('address',$this->form_data->address); ?>"/>
+<?php echo form_error('name'); ?>
+				</td>
+			</tr>
+
+			<tr>
+				<td valign="top">Municipal Number<span style="color:red;">*</span></td>
+				<td><input type="text" name="municipal_number" class="text" value="<?php echo set_value('municipal_number',$this->form_data->municipal_number); ?>"/>
+<?php echo form_error('name'); ?>
+				</td>
+			</tr>
+
+			<tr>
+				<td valign="top">Year Of Purchase<span style="color:red;">*</span></td>
+				<td><input type="text" name="year_of_purchase" class="text" value="<?php echo set_value('year_of_purchase',$this->form_data->year_of_purchase); ?>"/>
+<?php echo form_error('name'); ?>
+				</td>
+			</tr>
+
+			<tr>
+				<td valign="top">Area<span style="color:red;">*</span></td>
+				<td><input type="text" name="area" class="text" value="<?php echo set_value('area',$this->form_data->area); ?>"/>
+<?php echo form_error('name'); ?>
+				</td>
+			</tr>
+
+			<tr>
+				<td valign="top">Nature Of Ownership<span style="color:red;">*</span></td>
+				<td><input type="text" name="nature_of_ownership" class="text" value="<?php echo set_value('nature_of_ownership',$this->form_data->nature_of_ownership); ?>"/>
+<?php echo form_error('name'); ?>
+				</td>
+			</tr>
+
+			<tr>
+				<td>&nbsp;</td>
+				<td><input type="submit" value="Save"/></td>
+			</tr>
+		</table>
+		</div>
+		</form>
+		<br />
+		<?php echo $link_back; ?>
+	</div>
+</body>
+</html>

@@ -1,7 +1,7 @@
 <body>
 
 	<div class="content">
-		<h1>Manage Doctors</h1>
+		<h1>Manage Witness</h1>
     <!-- Modal HTML -->
     <div id="myModal" class="modal fade">
         <div class="modal-dialog">
@@ -12,11 +12,8 @@
     </div>
   
 </div>
-		<div class="text-right"><?php echo anchor('doctor/add/','Add Doctor',array('class'=>'btn btn-lg btn-primary text-right','data-toggle'=>'modal','data-target'=>'#myModal')); ?></div>
+		<div class="text-right"><?php echo anchor('witness/add/','Add Witness',array('class'=>'btn btn-lg btn-primary text-right','data-toggle'=>'modal','data-target'=>'#myModal')); ?></div>
 			<br />
 		<!--<div class="paging"><?php echo $pagination; ?></div>-->
 		<div class="data"><?php echo $table; ?></div>
-	
-		
-	</div>
-	
+</div>

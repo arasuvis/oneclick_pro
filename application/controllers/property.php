@@ -12,13 +12,17 @@ class Property extends CI_Controller
 		$this->load->helper('url');		
 		// load model
 		$this->load->model('property_model','',TRUE);
+
+
 	}
 	
 	/**** Start Immovable Property ****/
 
 	function index($offset = 0)
 	{
+		//$logged_user_id = $this->session->userdata['is_userlogged_in'];
 		//print_r($this->session->userdata['is_userlogged_in']);die();
+
 		$persons = $this->property_model->get_paged_list()->result();
 		
 		$config['base_url'] = site_url('property/index');// generate table data

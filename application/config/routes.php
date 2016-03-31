@@ -54,19 +54,7 @@ $route['dashboard'] = "user/dashboard";
 
 /*** Property routes ***/
 
-$route['property'] = "users/property";
-$route['add_immov'] = "users/property/add_immov_property";
-$route['display_immov'] = "users/property/display_immov_prop";
-
-$route['mov_form'] = "users/property/movable_form";
-$route['add_mov'] = "users/property/add_movable_property";
-$route['display_mov'] = "users/property/display_mov_prop";
-
-$route['property_list'] = "users/property/get_all_property_details";
-
-$route['property_add'] = "users/property/add";
-
-$route['property_update/(:num)'] = "users/property/update/$1";
+//$route['property'] = "property/index";
 
 /*** End Property ***/
 

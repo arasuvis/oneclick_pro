@@ -12,8 +12,10 @@
     </div>
   
 </div>
-		<div class="text-right"><?php echo anchor('lawyer/add/','Add Lawyers',array('class'=>'btn btn-lg btn-primary text-right','data-toggle'=>'modal','data-target'=>'#myModal')); ?></div>
+		<div class="text-right"><?php echo anchor('lawyer/add/','Add Lawyer',array('class'=>'btn btn-lg btn-primary text-right','data-toggle'=>'modal','data-target'=>'#myModal')); ?></div>
 			<br />
 		<!--<div class="paging"><?php echo $pagination; ?></div>-->
 		<div class="data"><?php echo $table; ?></div>
-</div>
+	
+		
+	</div>

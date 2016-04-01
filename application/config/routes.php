@@ -43,12 +43,12 @@ $route['404_override'] = '';
 
 /*** User Registartion & login ***/
 
-$route['reg'] = "user/reg_details";
-$route['registration'] = "user/register";
-$route['user_login'] = "user/login";
-$route['credentials'] = "user/credentials";
-$route['logout'] = "user/logout";
-$route['dashboard'] = "user/dashboard";
+//$route['reg'] = "user/reg_details";
+//$route['registration'] = "user/register";
+//$route['user_login'] = "user/login";
+//$route['credentials'] = "user/credentials";
+//$route['logout'] = "user/logout";
+//$route['dashboard'] = "user/dashboard";
 
 /*** End User Registration  & Login ***/
 

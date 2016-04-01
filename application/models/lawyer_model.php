@@ -1,5 +1,5 @@
 <?php
-class Lawyer_model extends CI_Model {
+class lawyer_model extends CI_Model {
 	
 	public $tbl_lawyer= 'tbl_lawyer';
 	

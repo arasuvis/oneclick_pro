@@ -31,7 +31,7 @@ class Create extends CI_Controller {
 			$data['phone_number'] = $this->input->post('phone_number');
 			$data['address'] = $this->input->post('address');
 			$this->messages_model->insert_entry($data);
-			redirect("admin/create/index");	
+			redirect("admin/admin/index");	
 		}
 		else
 		{

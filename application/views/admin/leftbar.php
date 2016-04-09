@@ -26,7 +26,7 @@
               <ul class="treeview-menu">
                
                 <li class="active"><a href="<?php echo base_url('admin/admin/index');  ?>"><i class="fa fa-circle-o"></i>Manage Advocate</a></li>
-				 <li class="active"><a href="<?php echo base_url('admin/admin/relation');  ?>"><i class="fa fa-circle-o"></i>Manage Relations</a></li>
+				 <li class="active"><a href="<?php echo base_url('admin/create/relation');  ?>"><i class="fa fa-circle-o"></i>Manage Relations</a></li>
               </ul>
             </li>        
         </section>

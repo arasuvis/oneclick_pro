@@ -62,13 +62,5 @@ class Admin extends CI_Controller
 
 	/**** End Login ****/
 
-	public function relation()
-	{
-		$messages = $this->relations_model->get_all_relations();
-		$data['messages'] = $messages;
-		$this->load->view('admin/header', $data);
-		$this->load->view('admin/leftbar', $data);
-		$this->load->view('admin/relations/relations', $data);
-		$this->load->view('admin/footer', $data);
-	}
+	
 }

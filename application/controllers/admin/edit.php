@@ -90,9 +90,10 @@ class Edit extends CI_Controller {
 	}
 	
 	public function delete_relation(){
+		
 		if($this->uri->segment(4, 0) != ""){
 			$this->relations_model->delete_entry($this->uri->segment(4, 0));	
 		}
-		redirect("admin/admin/relation");
+		redirect("admin/create/relation");
 	}
 }

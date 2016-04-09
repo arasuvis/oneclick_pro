@@ -58,7 +58,7 @@
       </li>
  	</ul>
 
- 	<?php  if(isset($this->session->userdata['is_userlogged_in']['email'])) { ?>
+ 	<?php  if(isset($this->session->userdata['is_userlogged_in'])) { ?>
 
     <ul class="nav navbar-nav navbar-right">
         <li><a href="<?php echo base_url(); ?>logout">SignOut</a></li>

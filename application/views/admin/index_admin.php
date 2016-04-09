@@ -39,7 +39,7 @@
       <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your session</p> 
         
-        <form method="POST" id="form_save" action="">
+        <form method="POST" id="form_save" >
           <div class="form-group has-feedback">
             <input type="text" class="form-control" id="email_address" placeholder="Email" name="email_address">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -118,7 +118,7 @@
         $.ajax({
           
           type:"POST",
-          url:"<?php echo base_url(); ?>admin/home/signin_form",
+          url:"<?php echo base_url(); ?>admin/admin/signin_form",
           data:data,
           success:function(result)
           {
@@ -129,7 +129,7 @@
             }
             else if(result == 1)
             {
-              window.location="<?php echo base_url('admin/home'); ?>";
+              window.location="<?php echo base_url(); ?>admin/admin/index";
             }
           }
         });

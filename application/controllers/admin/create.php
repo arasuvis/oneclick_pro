@@ -14,32 +14,46 @@ class Create extends CI_Controller {
 	}
 
 	public function input(){
+
 		
-		if(
-			$this->input->post('exampleInputEmail1') != "" &&
-			$this->input->post('exampleInputPassword1') != "" &&
-			$this->input->post('name') != ""
-		)
+		$this->form_validation->set_rules('name','Name','trim|required|alpha');
+		$this->form_validation->set_rules('email','Email','trim|required|valid_email');
+		$this->form_validation->set_rules('password','Password','trim|required');
+		$this->form_validation->set_rules('phone_number','Mobile Number','trim|required|integer|exact_length[10]');
+		$this->form_validation->set_error_delimiters('<p class="text-danger">','</p>');
 		
+		if($this->form_validation->run())
 		{
-			$data['email'] = $this->input->post('exampleInputEmail1');
-			$data['password'] = $this->input->post('exampleInputPassword1');
+			
+			$data['email'] = $this->input->post('email');
+			$data['password'] = $this->input->post('password');
 			$data['name'] = $this->input->post('name');
 			$data['phone_number'] = $this->input->post('phone_number');
 			$data['address'] = $this->input->post('address');
 			$this->messages_model->insert_entry($data);
-
-		//	redirect("/home/index?action=success");
-			
+			redirect("admin/create/index");	
 		}
-		
 		else
 		{
-
+			$this->load->view('admin/header');
+			$this->load->view('admin/leftbar');
+			$this->load->view('admin/create_view');
+			$this->load->view('admin/footer');
+				
 		}
-		redirect("admin/home/index");
+		//redirect("admin/index");
 	}	
 	
+	public function relation()
+	{
+		$messages = $this->relations_model->get_all_relations();
+		$data['messages'] = $messages;
+		$this->load->view('admin/header', $data);
+		$this->load->view('admin/leftbar', $data);
+		$this->load->view('admin/relations/relations', $data);
+		$this->load->view('admin/footer', $data);
+	}
+
 	public function add_relation()
 	{
 
@@ -51,21 +65,21 @@ class Create extends CI_Controller {
 	}
 	
 	public function insert_relation(){
-
-		if(
-			
-			$this->input->post('name') != ""
-		)
-		{
-			
-			$data['name'] = $this->input->post('name');
-			$this->relations_model->insert_entry($data);
-
-		//	redirect("/home/index?action=success");
-		}
-		else{
-			
-		}
-		redirect("admin/home/relation");
+			$this->form_validation->set_rules('name','Name','trim|required|alpha');
+			$this->form_validation->set_error_delimiters('<p class="text-danger">','</p>');
+			if($this->form_validation->run())
+				{
+					$data['name'] = $this->input->post('name');
+					$this->relations_model->insert_entry($data);
+					redirect("admin/create/relation");	
+		
+				}
+				else{
+					$this->load->view('admin/header');
+				$this->load->view('admin/leftbar');
+				$this->load->view('admin/relations/relations');
+				$this->load->view('admin/footer');
+					}
+		
 	}
 }

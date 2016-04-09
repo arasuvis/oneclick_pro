@@ -65,6 +65,7 @@ class Doctor extends CI_Controller {
 	function addPerson()
 	{
 		// set common properties
+		$user_id = $this->session->userdata['is_userlogged_in']['user_id'];
 		$data['title'] = 'Add new person';
 		$data['action'] = site_url('doctor/addPerson');
 		$data['link_back'] = anchor('doctor/index/','Back to list of persons',array('class'=>'back'));
@@ -83,7 +84,7 @@ class Doctor extends CI_Controller {
 		{
 			// save data
 			$doctor = array('name' => $this->input->post('name'),
-			'user_id' => 3,
+			'user_id' => $user_id,
 			'address' => $this->input->post('address'));
 							
 			 $id = $this->Doctor_model->save($doctor);
@@ -122,6 +123,7 @@ class Doctor extends CI_Controller {
 	function updatePerson()
 	{
 		// set common properties
+		$user_id = $this->session->userdata['is_userlogged_in']['user_id'];
 		$data['title'] = 'Update person';
 		$data['action'] = site_url('doctor/updatePerson');
 		$data['link_back'] = anchor('doctor/index/','Back to list of persons',array('class'=>'back'));
@@ -142,7 +144,7 @@ class Doctor extends CI_Controller {
 			$id = $this->input->post('id');
 			$person = array('name' => $this->input->post('name'),
 							'address' => $this->input->post('address'),
-							'user_id' => 3);
+							'user_id' => $user_id);
 			$this->Doctor_model->update($id,$person);
 			
 			// set user message

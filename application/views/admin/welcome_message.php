@@ -22,7 +22,7 @@
 
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title"><div> <a href='<?php echo base_url();?>admin/create/index'><button class='btn-primary'>Add Advocate</button></a></h3>
+                        <h3 class="box-title"><div> <a href='<?php echo base_url();?>admin/create/index'><button class='btn btn-warning'>Add Advocate</button></a></h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -50,8 +50,8 @@
 					<td> <?php echo $m->address; ?> </td>
 					<td> <?php echo date("M-d-Y g:i", strtotime($m->date)); ?> </td>
 					<td>
-						 <a href='<?php echo base_url("admin/edit/index/" . $m->id); ?>'><button class='btn-primary'>Edit</button></a>
-						 <a href='<?php echo base_url("admin/edit/delete/" . $m->id); ?>'><button class='btn-primary' onclick = "return delConfirm()">Delete</button></a>
+						 <a href='<?php echo base_url("admin/edit/index/" . $m->id); ?>'><button class='btn btn-success'>Edit</button></a>
+						 <a href='<?php echo base_url("admin/edit/delete/" . $m->id); ?>'><button class='btn btn-danger' onclick = "return delConfirm()">Delete</button></a>
 				    </td>
 				</tr>
 			<?php } ?>

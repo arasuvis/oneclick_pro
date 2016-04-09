@@ -126,6 +126,12 @@ class Property_model extends CI_Model {
 		return $sql->result();
 	}
 
+	public function get_member_name($mem_id)
+	{
+		$sql = $this->db->query("SELECT firstname FROM nodes WHERE user_id_new='$mem_id'");
+		return $sql->result();
+	}
+
 	/*** End Not Allocated Property ***/
 
 }

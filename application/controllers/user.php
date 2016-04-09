@@ -108,10 +108,16 @@ class User extends CI_Controller
 			if(!empty($log_id))
 			{
 
-				$data = array(
-				'email' => $email,	
-				'is_userlogged_in' => $log_id);
-				$this->session->set_userdata('is_userlogged_in', $data);
+				$session_data = $this->session->userdata('is_userlogged_in');
+
+$session_data['user_id'] = $log_id;
+
+$this->session->set_userdata("is_userlogged_in", $session_data);
+				
+				//$data = array(
+				//'email' => $email,	
+				//'is_userlogged_in' = $log_id;
+				//$this->session->set_userdata('is_userlogged_in', $log_id);
 				$this->dashboard();
 			}
 			else if($log_id == false)

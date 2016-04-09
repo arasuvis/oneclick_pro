@@ -17,6 +17,7 @@
    	  <link href="<?php echo base_url();?>css/dataTables.bootstrap.css" rel="stylesheet">
 	    <link href="<?php echo base_url();?>css/AdminLTE.min.css" rel="stylesheet">
 	    <link href="<?php echo base_url();?>css/_all-skins.min.css" rel="stylesheet">
+    
     </head>
     
     <body class="hold-transition skin-blue sidebar-mini">
@@ -59,7 +60,7 @@
                       <div class="pull-left">   
                       </div>
                         <div class="pull-right">
-                          <a href="<?php echo base_url(); ?>admin/home/logout" class="btn btn-default btn-flat">Sign out</a>
+                          <a href="<?php echo base_url(); ?>admin/admin/logout" class="btn btn-default btn-flat">Sign out</a>
                         </div>
                     </li>
                   </ul>

@@ -13,34 +13,39 @@ margin-bottom:-15px
                   <h3 class="box-title">Add Advocate</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-               <form method="POST" action="input/">
+               <form method="POST" action="<?php echo base_url('admin/create/input'); ?>">
                   <div class="box-body">
+                  <div class="form-group">
+                      <label for="exampleInputPassword1">Name *</label>
+                      <input type="text" class="form-control" name="name" id="name" placeholder="Name">
+                       <?php echo form_error('name'); ?>
+                    </div>
+                    
+
                     <div class="form-group">
                       <label for="exampleInputEmail1">Email address *</label>
-                      <input type="email" class="form-control" name="exampleInputEmail1" id="exampleInputEmail1" placeholder="Enter email">
-                     <?php echo form_error('exampleInputEmail1'); ?>
+                      <input type="email" class="form-control" name="email" id="exampleInputEmail1" placeholder="Enter email">
+                     <?php echo form_error('email'); ?>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Password *</label>
-                      <input type="password" class="form-control" name="exampleInputPassword1" id="exampleInputPassword1" placeholder="Password">
+                      <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
+                       <?php echo form_error('password'); ?>
                     </div>
 					<div class="form-group">
-                      <label for="exampleInputPassword1">Name *</label>
-                      <input type="text" class="form-control" name="name" id="name" placeholder="Name">
-                    </div>
-					<div class="form-group">
-                      <label for="exampleInputPassword1">Phone Number *</label>
-                      <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Password">
+                      <label for="exampleInputPassword1">Mobile Number *</label>
+                      <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Mobile Number">
+                      <?php echo form_error('phone_number'); ?>
                     </div>
 					<div class="form-group">
                       <label for="exampleInputPassword1">Address</label>
-                      <textarea id='address' name="address"></textarea>
+                        <div><textarea id='address' name="address" rows="4" cols="130%"></textarea></div>
                     </div>					
-                   
+                 
                  
                   </div><!-- /.box-body -->
-
-                  <div class="box-footer">
+                  <div class="form-group col-lg-offset-1" >
+                 
                     <button type="submit" class="btn btn-primary">Submit</button>
                   </div>
                 </form>

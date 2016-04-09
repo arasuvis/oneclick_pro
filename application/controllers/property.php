@@ -20,8 +20,6 @@ class Property extends CI_Controller
 
 	function index($offset = 0)
 	{
-		//$logged_user_id = $this->session->userdata['is_userlogged_in'];
-		//print_r($this->session->userdata['is_userlogged_in']);die();
 
 		$persons = $this->property_model->get_paged_list()->result();
 		
@@ -76,7 +74,8 @@ class Property extends CI_Controller
 	function addproperty()
 	{
 		// set common properties
-		
+		$user_id = $this->session->userdata['is_userlogged_in']['user_id'];
+
 		$data['title'] = 'Add new person';
 		$data['action'] = site_url('property/addproperty');
 		$data['link_back'] = anchor('property/index/','Back to list',array('class'=>'back'));
@@ -95,7 +94,7 @@ class Property extends CI_Controller
 		{
 			// save data
 			$property = array('name' => $this->input->post('name'),
-			'user_id' => 3,
+			'user_id' => $user_id,
 			'address' => $this->input->post('address'),
 			'municipal_number' => $this->input->post('municipal_number'),
 			'year_of_purchase' => $this->input->post('year_of_purchase'),
@@ -144,6 +143,8 @@ class Property extends CI_Controller
 	function updatePerson()
 	{
 		// set common properties
+		$user_id = $this->session->userdata['is_userlogged_in']['user_id'];
+
 		$data['title'] = 'Update person';
 		$data['action'] = site_url('property/updatePerson');
 		$data['link_back'] = anchor('property/index/','Back to list',array('class'=>'back'));
@@ -168,7 +169,7 @@ class Property extends CI_Controller
 							'year_of_purchase' => $this->input->post('year_of_purchase'),
 							'area' => $this->input->post('area'),
 							'nature_of_ownership' => $this->input->post('nature_of_ownership'),
-							'user_id' => 3);
+							'user_id' => $user_id);
 			$this->property_model->update($id,$person);
 			
 			// set user message
@@ -277,7 +278,7 @@ class Property extends CI_Controller
 	function addproperty2()
 	{
 		// set common properties
-		
+		$user_id = $this->session->userdata['is_userlogged_in']['user_id'];
 		$data['title'] = 'Add new person';
 		$data['action'] = site_url('property/addproperty2');
 		$data['link_back'] = anchor('property/index2/','Back to list of persons',array('class'=>'back'));
@@ -296,7 +297,7 @@ class Property extends CI_Controller
 		{
 			// save data
 			$mov_property = array('name' => $this->input->post('name'),
-			'user_id' => 3,
+			'user_id' => $user_id,
 			'comments' => $this->input->post('comments'),
 			'created_date' => date("Y-m-d H:i:s"),
 			'modified_date' => date("Y-m-d H:i:s"),
@@ -339,6 +340,7 @@ class Property extends CI_Controller
 	function updatePerson2()
 	{
 		// set common properties
+		$user_id = $this->session->userdata['is_userlogged_in']['user_id'];
 		$data['title'] = 'Update person';
 		$data['action'] = site_url('property/updatePerson2');
 		$data['link_back'] = anchor('property/index2/','Back to list',array('class'=>'back'));
@@ -359,7 +361,7 @@ class Property extends CI_Controller
 			$id = $this->input->post('id');
 			$person = array('name' => $this->input->post('name'),
 							'comments' => $this->input->post('comments'),
-							'user_id' => 3);
+							'user_id' => $user_id);
 			$this->property_model->update2($id,$person);
 			
 			// set user message
@@ -422,7 +424,10 @@ class Property extends CI_Controller
 		$i = 0 + $offset;
 		foreach ($not_prop as $person)
 		{
-			$this->table->add_row(++$i, $person->member_id, $person->reason,
+
+			$member_name = $this->property_model->get_member_name($person->member_id);
+
+			$this->table->add_row(++$i, $member_name[0]->firstname, $person->reason,
 			anchor('property/update3/'.$person->id,'update',array('class'=>'update',
 			'data-toggle'=>'modal','data-target'=>'#myModal')).' '.
 			anchor('property/delete3/'.$person->id,'delete',array('class'=>'delete',
@@ -459,7 +464,7 @@ class Property extends CI_Controller
 	function addproperty3()
 	{
 		// set common properties
-		
+		$user_id = $this->session->userdata['is_userlogged_in']['user_id'];
 		$data['title'] = 'Add new person';
 		$data['action'] = site_url('property/addproperty3');
 		$data['link_back'] = anchor('property/index3/','Back to list of persons',array('class'=>'back'));
@@ -478,7 +483,7 @@ class Property extends CI_Controller
 		{
 			// save data
 			$not_property = array(
-			'user_id' => 3,
+			'user_id' => $user_id,
 			'member_id' => $this->input->post('member_id'),
 			'reason' => $this->input->post('reason'),
 			'created_date' => date("Y-m-d H:i:s"),
@@ -523,6 +528,7 @@ class Property extends CI_Controller
 	function updatePerson3()
 	{
 		// set common properties
+		$user_id = $this->session->userdata['is_userlogged_in']['user_id'];
 		$data['title'] = 'Update person';
 		$data['action'] = site_url('property/updatePerson3');
 		$data['link_back'] = anchor('property/index3/','Back to list',array('class'=>'back'));
@@ -542,7 +548,7 @@ class Property extends CI_Controller
 			// save data
 			$id = $this->input->post('id');
 			$person = array('reason' => $this->input->post('reason'),
-							'user_id' => 3,
+							'user_id' => $user_id,
 							'member_id' => $this->input->post('member_id'));
 			$this->property_model->update3($id,$person);
 			

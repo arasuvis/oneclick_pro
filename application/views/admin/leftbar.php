@@ -24,9 +24,9 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-               <!-- <li><a href="simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>-->
-                <li class="active"><a href="<?php echo base_url('admin/home/index');  ?>"><i class="fa fa-circle-o"></i>Manage Advocate</a></li>
-				 <li class="active"><a href="<?php echo base_url('admin/home/relation');  ?>"><i class="fa fa-circle-o"></i>Manage Relations</a></li>
+               
+                <li class="active"><a href="<?php echo base_url('admin/admin/index');  ?>"><i class="fa fa-circle-o"></i>Manage Advocate</a></li>
+				 <li class="active"><a href="<?php echo base_url('admin/admin/relation');  ?>"><i class="fa fa-circle-o"></i>Manage Relations</a></li>
               </ul>
             </li>        
         </section>

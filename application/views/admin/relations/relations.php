@@ -22,7 +22,7 @@
 
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title"><div> <a href='<?php echo base_url();?>admin/create/add_relation'><button class='btn-primary'>Add Relation</button></a></h3>
+                        <h3 class="box-title"><div> <a href='<?php echo base_url();?>admin/create/add_relation'><button class='btn btn-warning'>Add Relation</button></a></h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -42,8 +42,8 @@
 					<td> <?php echo $m->name; ?> </td>					
 					<td> <?php echo date("M-d-Y g:i", strtotime($m->date)); ?> </td>
 					<td>
-						 <a href='<?php echo base_url("admin/edit/update_view/" . $m->rel_id); ?>'><button class='btn-primary'>Edit</button></a>
-						 <a href='<?php echo base_url("admin/edit/delete_relation/" . $m->rel_id); ?>' onClick ="return delConfirm()"><button class='btn-primary'>Delete</button></a>
+						 <a href='<?php echo base_url("admin/edit/update_view/" . $m->rel_id); ?>'><button class='btn btn-success'>Edit</button></a>
+						 <a href='<?php echo base_url("admin/edit/delete_relation/" . $m->rel_id); ?>' onClick ="return delConfirm()"><button class=' btn btn-danger'>Delete</button></a>
 				    </td>
 				</tr>
 			<?php } ?>

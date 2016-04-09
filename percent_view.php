@@ -48,18 +48,14 @@
 		//console.log($(data).attr("selected",true).val());
 		
 	}
-   $(function () {
-	 
-
-
-
+	$(function () {
         $("#btnClone").bind("click", function () {
 			
             var select = $("#container select").length + 1;
 			var select1 = $("#container select").length;
             var input = $("#container input").length + 1;
-			//var input1 = $("#container input").length+1;
-			//alert(select);
+			var input3 = $("#container input").length;
+			alert(input3);
 			
             //Clone the DropDownList
             //var ddl = $("#property").clone();
@@ -113,7 +109,9 @@
 				
 				//alert("#spouse_" + select1);
 				$( "#spouse_" + select1).prop('disabled','disabled');
-				$("#container").append("<br /><br />");
+				alert($("#thiru_" + input3));
+				$("#thiru_" + input3).prop('disabled','disabled');
+				//$("#container").append("<br /><br />");
 				array.push({per:p,mem:s,sum:t});
 				console.log(array);
 				
@@ -133,9 +131,9 @@
 			{
 				alert('Above 100');
 			}
-			
         });
-		
+
+   
 	});
 	
 </script>

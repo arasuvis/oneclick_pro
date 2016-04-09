@@ -77,7 +77,7 @@ class Create extends CI_Controller {
 				else{
 					$this->load->view('admin/header');
 				$this->load->view('admin/leftbar');
-				$this->load->view('admin/relations/relations');
+				$this->load->view('admin/relations/create_view');
 				$this->load->view('admin/footer');
 					}
 		

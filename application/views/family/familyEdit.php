@@ -73,7 +73,7 @@
 		</div>
 		</form>
 		<br />
-		<?php echo $link_back; ?>
+		<?php echo $link_back;  ?>
 	</div>
 </body>
 <script type="text/javascript" src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>

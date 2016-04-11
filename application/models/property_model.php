@@ -5,7 +5,7 @@ class Property_model extends CI_Model {
 	public $tbl_property2 = 'movable_propertys';
 	public $tbl_property3 = 'not_allocated_details';
 
-	function __construct(){
+	function __construct(){     
 		parent::__construct();
 	}
 	

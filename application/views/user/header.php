@@ -36,10 +36,10 @@
 	 <li class=""><a href="<?php echo base_url(); ?>family">Family</a></li>
 	</ul>
 	<ul class="nav navbar-nav">
-	 <li class=""><a href="?php echo base_url(); ?>lawyers">Lawyers</a></li>
+	 <li class=""><a href="<?php echo base_url(); ?>lawyers">Lawyers</a></li>
 	</ul>
 	<ul class="nav navbar-nav">
-	 <li class=""><a href="?php echo base_url(); ?>doctor">Doctor</a></li>
+	 <li class=""><a href="<?php echo base_url(); ?>doctor">Doctor</a></li>
 	</ul>
       <ul class="nav navbar-nav">
       <li class="dropdown">

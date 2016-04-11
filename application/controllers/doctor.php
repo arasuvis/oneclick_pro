@@ -32,7 +32,7 @@ class Doctor extends CI_Controller {
 		$i = 0 + $offset;
 		foreach ($persons as $person)
 		{
-			$this->table->add_row(++$i, $person->name, $person->name,
+			$this->table->add_row(++$i, $person->name, $person->address,
 				anchor('doctor/update/'.$person->id,'update',array('class'=>'update','data-toggle'=>'modal','data-target'=>'#myModal')).' '.
 				anchor('doctor/delete/'.$person->id,'delete',array('class'=>'delete','onclick'=>"return confirm('Are you sure want to delete this person?')"))
 			);
@@ -148,11 +148,12 @@ class Doctor extends CI_Controller {
 			$this->Doctor_model->update($id,$person);
 			
 			// set user message
-			$data['message'] = '<div class="success">update person success</div>';
+			//$data['message'] = '<div class="success">update person success</div>';
 		}
 		
 		// load view
-		$this->load->view('doctor/index', $data);
+		//$this->load->view('doctor/index', $data);
+		redirect('doctor/index', $data);
 	}
 	
 	function delete($id)

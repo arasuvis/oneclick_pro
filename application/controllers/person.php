@@ -49,6 +49,7 @@ class Person extends CI_Controller {
 		foreach ($persons as $person)
 		{
 			$this->table->add_row(++$i, $person->name, strtoupper($person->gender)=='M'? 'Male':'Female', date('d-m-Y',strtotime($person->dob)), 
+				//anchor('person/view/'.$person->id,'view',array('class'=>'view','data-toggle'=>'modal','data-target'=>'#myModal')).' '.
 				anchor('person/view/'.$person->id,'view',array('class'=>'view','data-toggle'=>'modal','data-target'=>'#myModal')).' '.
 				anchor('person/update/'.$person->id,'update',array('class'=>'update','data-toggle'=>'modal','data-target'=>'#myModal')).' '.
 				anchor('person/delete/'.$person->id,'delete',array('class'=>'delete','onclick'=>"return confirm('Are you sure want to delete this person?')"))

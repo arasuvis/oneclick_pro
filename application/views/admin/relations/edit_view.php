@@ -7,11 +7,11 @@
                 </div><!-- /.box-header -->
                 <!-- form start -->
                <form method="POST" action="<?php echo base_url('admin/edit/edit_relation');?>">
-			   <input type="hidden" name="id" value="<?php echo $entry->rel_id; ?>"/>
+			   <input type="hidden" name="id" value="<?php if(isset($entry->rel_id)) echo $entry->rel_id;  else echo $_POST['id']; ?>"/>
                   <div class="box-body">
 					<div class="form-group">
                       <label for="exampleInputPassword1">Name *</label>
-                      <input type="text" class="form-control" value="<?php echo $entry->name; ?>" name="name" id="name" placeholder="Name">
+                      <input type="text" required class="form-control" value="<?php echo $entry->name; ?>" name="name" id="name" placeholder="Name">
                    
 
                   <div class="box-footer">

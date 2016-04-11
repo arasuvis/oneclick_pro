@@ -45,7 +45,7 @@ class Edit extends CI_Controller {
 			$this->load->view('admin/edit_view');
 			$this->load->view('admin/footer');
 		}
-		//redirect("admin/admin/index");
+		redirect("admin/admin/index");
 	}
 
 	public function delete(){

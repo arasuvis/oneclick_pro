@@ -12,9 +12,13 @@ class User extends CI_Controller
 	}
 
 	function index()
-	{
-		$this->load->view('homepage');
+	{	
+		$this->load->view('header_home');
+		$this->load->view('navbar_home');
+		$this->load->view('index_home');
+		$this->load->view('footer_home');
 	}
+	
 
 	function register()
 	{
@@ -134,7 +138,7 @@ $this->session->set_userdata("is_userlogged_in", $session_data);
 		'email' => ''
 		);
 		$this->session->unset_userdata('is_userlogged_in', $sess_array);
-		$this->load->view('homepage');	
+		redirect('user');	
 	}
 
 

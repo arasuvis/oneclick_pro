@@ -49,7 +49,8 @@
   </div>
   
 </div>
-		<div class="text-right"><?php echo anchor('person/add/','Add Witness',array('class'=>'btn btn-lg btn-primary text-right','data-toggle'=>'modal','data-target'=>'#myModal')); ?></div>
+		<!--<div class="text-right"><?php echo anchor('person/add/','Add Witness',array('class'=>'btn btn-lg btn-primary text-right','data-toggle'=>'modal','data-target'=>'#myModal')); ?></div>-->
+		<div class="text-right"><?php echo anchor('person/add/','Add Witness',array('class'=>'btn btn-lg btn-primary text-right')); ?></div>
 			<br />
 		<!--<div class="paging"><?php echo $pagination; ?></div>-->
 		<div class="data"><?php echo $table; ?></div>

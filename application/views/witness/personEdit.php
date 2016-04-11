@@ -20,8 +20,8 @@
 		<table>
 			<tr>
 				<td width="30%">ID</td>
-				<td><input type="text" name="id" disabled="disable" class="text" value="<?php echo set_value('id'); ?>"/></td>
-				<input type="hidden" name="id" value="<?php echo set_value('id',$this->form_data->id); ?>"/>
+				<td><select class="select" name="fam_member"><option>Select Member</option></select></td>
+				
 			</tr>
 			<tr>
 				<td valign="top">Name<span style="color:red;">*</span></td>

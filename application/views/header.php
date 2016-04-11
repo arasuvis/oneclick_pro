@@ -32,9 +32,9 @@
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-	<ul class="nav navbar-nav">
+	<!--<ul class="nav navbar-nav">
 	 <li class=""><a href="<?php echo base_url(); ?>family">Family</a></li>
-	</ul>
+	</ul>-->
   <ul class="nav navbar-nav">
    <li class=""><a href="<?php echo base_url(); ?>witness/index">Witness</a></li>
   </ul>

@@ -30,9 +30,10 @@
 			<tr>
 			<td valign="top">Relationship<span style="color:red;">*</span></td>
 			<td><select name="relationship">
+			<option value=""> Select Relationship</option>
 					<?php foreach($rel as $relation) {  ?>
 			
-  				<option name="<?php echo $relation->name; ?>"> <?php echo $relation->name; ?>
+  				<option value="<?php echo $relation->name; ?>"> <?php echo $relation->name; ?> 
   				</option>
   				<?php } ?>
  			</select>				
@@ -50,7 +51,7 @@
 			<tr>
 				<td valign="top">Marital Status<span style="color:red;">*</span></td>
 				<td><select name="marital_status">	
-  				<option>Single </option>
+  				<option selected>Single </option>
   				<option>Married </option>
   	 			</select>			
 <?php echo form_error('marital_status'); ?>
@@ -59,7 +60,7 @@
 			<tr>
 			<tr>
 				<td valign="top">Status<span style="color:red;">*</span></td>
-				<td><input type="radio" name="status" class="text" value="Alive"/>Alive
+				<td><input checked type="radio" name="status" class="text" value="Alive"/>Alive
 				<input type="radio" name="status" class="text" value="Dead"/>Dead
 <?php echo form_error('status'); ?>
 				</td>

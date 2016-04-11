@@ -33,8 +33,10 @@ class Doctor_model extends CI_Model {
 	}
 	
 	public function update($id, $person){
+		
 		$this->db->where('id', $id);
-		$this->db->update($this->tbl_doctor, $person);
+		return $this->db->update($this->tbl_doctor, $person);
+
 	}
 	
 	public function delete($id){

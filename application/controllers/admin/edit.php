@@ -86,7 +86,7 @@ class Edit extends CI_Controller {
 		else{
 			
 		}
-		redirect("admin/admin/relation");
+		redirect("admin/create/relation");
 	}
 	
 	public function delete_relation(){
@@ -95,5 +95,87 @@ class Edit extends CI_Controller {
 			$this->relations_model->delete_entry($this->uri->segment(4, 0));	
 		}
 		redirect("admin/create/relation");
+	}
+
+	public function update_view_property()
+	{
+		
+		$data['entry'] =  $this->property_model->get_entry($this->uri->segment(4, 0));
+		if(!isset($data['entry'][0]) || $data['entry'][0] == ""){
+			echo "error";
+		}
+		else
+		{
+			$data['entry'] = $data['entry'][0];
+			$this->load->view('admin/header');
+			$this->load->view('admin/leftbar');
+			$this->load->view('admin/property_type/edit_view', $data);
+			$this->load->view('admin/footer');
+		}
+	}
+
+	public function edit_propertye_type(){
+
+		if(
+			$this->input->post('name') != ""
+		)
+		{			
+			$data['id'] = $this->input->post('id');
+			$data['name'] = $this->input->post('name');
+			$this->property_model->update_entry($data);			
+		}
+		else{
+			
+		}
+		redirect("admin/create/property_type");
+	}
+
+	public function delete_propertye_type(){
+		
+		if($this->uri->segment(4, 0) != ""){
+			$this->property_model->delete_entry($this->uri->segment(4, 0));	
+		}
+		redirect("admin/create/property_type");
+	}
+
+	public function update_view_ownership()
+	{
+		
+		$data['entry'] =  $this->ownership_model->get_entry($this->uri->segment(4, 0));
+		if(!isset($data['entry'][0]) || $data['entry'][0] == ""){
+			echo "error";
+		}
+		else
+		{
+			$data['entry'] = $data['entry'][0];
+			$this->load->view('admin/header');
+			$this->load->view('admin/leftbar');
+			$this->load->view('admin/ownership/edit_view', $data);
+			$this->load->view('admin/footer');
+		}
+	}
+
+	public function edit_ownership(){
+
+		if(
+			$this->input->post('name') != ""
+		)
+		{			
+			$data['id'] = $this->input->post('id');
+			$data['name'] = $this->input->post('name');
+			$this->ownership_model->update_entry($data);			
+		}
+		else{
+			
+		}
+		redirect("admin/create/ownership");
+	}
+
+	public function delete_ownership(){
+		
+		if($this->uri->segment(4, 0) != ""){
+			$this->ownership_model->delete_entry($this->uri->segment(4, 0));	
+		}
+		redirect("admin/create/ownership");
 	}
 }

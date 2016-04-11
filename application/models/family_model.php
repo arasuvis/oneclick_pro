@@ -2,6 +2,9 @@
 
 class Family_model extends CI_Model
 {
+
+	public $tbl_family= 'tbl_family';
+
 	function get_paged_list()
 	{
 		$this->db->order_by('id','asc');
@@ -18,6 +21,16 @@ class Family_model extends CI_Model
 	function save($family){		
 		$this->db->insert($this->tbl_family, $family);
 		return $this->db->insert_id();
+	}
+
+	function update($id,$family){		
+		$this->db->insert($this->tbl_family, $family);
+		return $this->db->insert_id();
+	}
+
+	public function get_by_id($id){
+		$this->db->where('id', $id);
+		return $this->db->get($this->tbl_family);
 	}
 }
 

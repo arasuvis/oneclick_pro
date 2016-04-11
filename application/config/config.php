@@ -15,7 +15,7 @@
 |
 */
 $config['base_url']	= '';
-$config['jtree_url']	= 'http://localhost/projects/oneclick_dev/trunk/plugins/jtree/';
+//$config['jtree_url']	= 'http://localhost/projects/oneclick_dev/trunk/plugins/jtree/';
 
 /*
 |--------------------------------------------------------------------------

@@ -80,6 +80,83 @@ class Create extends CI_Controller {
 				$this->load->view('admin/relations/create_view');
 				$this->load->view('admin/footer');
 					}
-		
+			}
+
+	public function property_type()
+	{
+		$messages = $this->property_model->get_all_property();
+		$data['messages'] = $messages;
+		$this->load->view('admin/header', $data);
+		$this->load->view('admin/leftbar', $data);
+		$this->load->view('admin/property_type/properties', $data);
+		$this->load->view('admin/footer', $data);
 	}
+
+	public function add_property_type()
+	{
+
+		$data['messages'] = "";
+		$this->load->view('admin/header', $data);
+		$this->load->view('admin/leftbar', $data);
+			$this->load->view('admin/property_type/create_view');
+			$this->load->view('admin/footer');
+	}
+
+	
+	public function insert_property_type(){
+			$this->form_validation->set_rules('name','Name','trim|required|alpha');
+			$this->form_validation->set_error_delimiters('<p class="text-danger">','</p>');
+			if($this->form_validation->run())
+				{
+					$data['name'] = $this->input->post('name');
+					$this->property_model->insert_entry($data);
+					redirect("admin/create/property_type");	
+		
+				}
+				else{
+					$this->load->view('admin/header');
+				$this->load->view('admin/leftbar');
+				$this->load->view('admin/property_type/create_view');
+				$this->load->view('admin/footer');
+					}
+			}
+
+	public function ownership()
+	{
+		$messages = $this->ownership_model->get_all_ownership();
+		$data['messages'] = $messages;
+		$this->load->view('admin/header', $data);
+		$this->load->view('admin/leftbar', $data);
+		$this->load->view('admin/ownership/owners', $data);
+		$this->load->view('admin/footer', $data);
+	}
+
+	public function add_ownership()
+	{
+
+		$data['messages'] = "";
+		$this->load->view('admin/header', $data);
+		$this->load->view('admin/leftbar', $data);
+			$this->load->view('admin/ownership/create_view');
+			$this->load->view('admin/footer');
+	}
+
+	
+	public function insert_ownership(){
+			$this->form_validation->set_rules('name','Name','trim|required|alpha');
+			$this->form_validation->set_error_delimiters('<p class="text-danger">','</p>');
+			if($this->form_validation->run())
+				{
+					$data['name'] = $this->input->post('name');
+					$this->ownership_model->insert_entry($data);
+					redirect("admin/create/ownership");	
+		
+				}
+				else{
+					$this->load->view('admin/header');
+				$this->load->view('admin/leftbar');
+				$this->load->view('admin/ownership/create_view');
+				$this->load->view('admin/footer');
+					}
+			}
 }

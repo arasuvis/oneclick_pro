@@ -29,7 +29,7 @@
 			</tr>
 			<tr>
 			<td valign="top">Relationship<span style="color:red;">*</span></td>
-			<td><select name="relation">
+			<td><select name="relationship">
 					<?php foreach($rel as $relation) {  ?>
 			
   				<option name="<?php echo $relation->name; ?>"> <?php echo $relation->name; ?>
@@ -42,7 +42,7 @@
 			<tr>
 				<td valign="top">Date of Birth<span style="color:red;">*</span></td>
 				
-				<td><input class="inputDate" id="datepicker"  />
+				<td><input class="inputDate" name="dob" id="datepicker"  />
 					
 <?php echo form_error('dob'); ?>
 				</td>

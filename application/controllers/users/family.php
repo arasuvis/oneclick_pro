@@ -6,6 +6,7 @@ class Family extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->library(array('table','form_validation'));
+		$this->load->model('family_model');
 	}
 
 	public function index($offset = 0)
@@ -87,7 +88,7 @@ class Family extends CI_Controller
 	function addFamily()
 	{
 		
-		$data['title'] = 'Add New Family';
+ 		$data['title'] = 'Add New Family';
 		$data['action'] = site_url('users/family/addFamily');
 		$data['link_back'] = anchor('users/family/index/','Back to list of family',array('class'=>'back'));
 		
@@ -99,6 +100,7 @@ class Family extends CI_Controller
 		// run validation
 		if ($this->form_validation->run() == FALSE)
 		{
+			echo "error"; die();
 			$data['message'] = '';
 		}
 		else
@@ -109,8 +111,8 @@ class Family extends CI_Controller
 			'dob'=>$this->input->post('dob'),
 			'marital_status' => $this->input->post('marital_status'),
 			'status' => $this->input->post('status'));
-				print_r($family); die();			
-			 $id = $this->lawyer_model->save($family);
+
+			$id = $this->family_model->save($family);
 			
 			// set user message
 			$data['message'] = '<div class="success">add new lawyer success</div>';
@@ -126,11 +128,14 @@ class Family extends CI_Controller
 		$this->_set_rules();
 		
 		// prefill form values
-		$person = $this->lawyer_model->get_by_id($id)->row();
+		$family = $this->family_model->get_by_id($id)->row();
 		@$this->form_data->id = $id;
-		$this->form_data->name = $person->name;
-		$this->form_data->address = $person->address;
-		
+		$this->form_data->name = $family->name;
+		$this->form_data->relationship = $family->relationship;
+		$this->form_data->dob = $family->dob;
+		$this->form_data->marital_status = $family->marital_status;
+		$this->form_data->status = $family->status;
+		print_r($family); die();
 		// set common properties
 		$data['title'] = 'Update Family';
 		$data['message'] = '';
@@ -141,5 +146,41 @@ class Family extends CI_Controller
 		$this->load->view('family/familyEdit', $data);
 	}
 
-	
+	function updateFamily()
+	{
+		// set common properties
+
+		$data['title'] = 'Update Family';
+		$data['action'] = site_url('users/family/updateFamily');
+		$data['link_back'] = anchor('users/family/index/','Back to list of family',array('class'=>'back'));
+		
+		// set empty default form field values
+		$this->_set_fields();
+		// set validation properties
+		$this->_set_rules();
+		
+		// run validation
+		if ($this->form_validation->run() == FALSE)
+		{
+			$data['message'] = '';
+		}
+		else
+		{
+			// save data
+			$id = $this->input->post('id');
+			$family = array('name' => $this->input->post('name'),
+			'relationship'=>$this->input->post('relationship'),
+			'dob'=>$this->input->post('dob'),
+			'marital_status' => $this->input->post('marital_status'),
+			'status' => $this->input->post('status'));
+
+			$this->family_model->update($id,$family);
+			
+			// set user message
+			$data['message'] = '<div class="success">update family success</div>';
+		}
+		
+		// load view
+		$this->load->view('users/family/index', $data);
+	}
 }

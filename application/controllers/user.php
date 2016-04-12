@@ -224,7 +224,7 @@ class User extends CI_Controller
 
 	function new_pass()
 	{
-		$this->form_validation->set_rules('confirm_password','Confirm Password','trim|required|matches[password]');
+		$this->form_validation->set_rules('confirm_new_password','Confirm New Password','trim|required|matches[new_password]');
 		$this->form_validation->set_error_delimiters('<p class="text-danger">','</p>');
 
 		if($this->form_validation->run() == False)

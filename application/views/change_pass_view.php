@@ -17,19 +17,19 @@
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">Confirm Current Password</label>  
+  <label class="col-md-4 control-label" for="textinput">New Password</label>  
   <div class="col-md-4">
-  <input id="textinput" name="confirm_password" type="text" placeholder="Confirm Current Password" class="form-control input-md" required="">
-    <?php echo form_error('confirm_password'); ?> 
+  <input id="textinput" name="new_password" type="text" placeholder="New Password" class="form-control input-md" required="">
+    <?php echo form_error('new_password'); ?> 
   </div>
 </div>
 
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">New Password</label>  
+  <label class="col-md-4 control-label" for="textinput">Confirm New Password</label>  
   <div class="col-md-4">
-  <input id="textinput" name="new_password" type="text" placeholder="Enter New Password" class="form-control input-md" required="">
+  <input id="textinput" name="confirm_new_password" type="text" placeholder="Enter New Password" class="form-control input-md" required="">
     
   </div>
 </div>

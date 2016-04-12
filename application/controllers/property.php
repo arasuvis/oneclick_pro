@@ -11,7 +11,7 @@ class Property extends CI_Controller
 		// load helper
 		$this->load->helper('url');		
 		// load model
-		$this->load->model('property_model','',TRUE);
+		$this->load->model('property_model');
 		$this->load->model('admin/property_type_model');
 		$this->load->model('admin/ownership_model');
 

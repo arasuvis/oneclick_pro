@@ -14,7 +14,7 @@
 <body>
 
 	<div class="content">
-		<h1><?php echo  $title; echo $families->relationship; ?></h1>
+		<h1><?php echo  $title; ?></h1>
 		<?php echo $message; ?>
 		<form method="post" action="<?php echo $action; ?>">
 		<div class="data">

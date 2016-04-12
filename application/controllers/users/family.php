@@ -49,8 +49,10 @@ class Family extends CI_Controller
 		// set validation properties
 		$this->_set_rules();
 
-		$data['rel']=$this->family_model->get_relation()->result();
 
+		$data['rel']=$this->family_model->get_relation()->result();
+		// prefill form values
+	
 				// set common properties
 		$data['title'] = 'Add new Family';
 		$data['message'] = '';
@@ -107,18 +109,18 @@ class Family extends CI_Controller
 		else
 		{
 			// save data
+			//print_r($this->session->userdata['is_userlogged_in']['user_id']);
+			//exit;
 			$family = array('name' => $this->input->post('name'),
 			'relationship'=>$this->input->post('relationship'),
 			'dob'=>$this->input->post('dob'),
 			'marital_status' => $this->input->post('marital_status'),
-			'status' => $this->input->post('status'));
-			
-			$id = $this->family_model->save($family);
-			
+			'status' => $this->input->post('status'),
+			'will_id' => $this->session->userdata['is_userlogged_in']['will_id']);
+			$id = $this->family_model->save($family);			
 			// set user message
 			$data['message'] = '<div class="success">add new lawyer success</div>';
-		}
-		
+		}		
 		// load view
 		redirect('users/family/index', $data);
 	}

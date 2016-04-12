@@ -54,7 +54,7 @@ $route['dashboard'] = "user/dashboard";
 
 /*** Property routes ***/
 
-//$route['property'] = "property/index";
+$route['property'] = "property/index";
 
 /*** End Property ***/
 

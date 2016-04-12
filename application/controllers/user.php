@@ -8,11 +8,21 @@ class User extends CI_Controller
 		$this->load->library('form_validation');
 		$this->load->library('session');
 		$this->load->library('email');
+		$this->load->model('user_model');
+		//echo "<pre>";print_r($this->session->userdata);
+		/*if (isset($this->session->userdata['is_userlogged_in'])) 
+		{
+			redirect(base_url('user/dashboard'));
+		}*/
 
 	}
 
 	function index()
 	{	
+		if (isset($this->session->userdata['is_userlogged_in'])) 
+		{
+			redirect(base_url('user/dashboard'));
+		}
 		$this->load->view('header_home');
 		$this->load->view('navbar_home');
 		$this->load->view('index_home');
@@ -57,9 +67,7 @@ class User extends CI_Controller
 			'address' => $this->input->post('address'),
 			'mobile' => $this->input->post('mobile')
 						);
-
-		$this->load->model('user_model');
-
+		
 		if($this->user_model->save_reg($data))
 		{
 			$this->load->view('homepage');
@@ -78,14 +86,16 @@ class User extends CI_Controller
 
 	function dashboard()
 	{
+		//print_r($this->session->userdata['is_userlogged_in']); die();
 		if (isset($this->session->userdata['is_userlogged_in'])) 
 		{
-			$this->load->view('user_page');
+			$this->load->view('user_page'); 
 		}
 		else
 		{
-			$this->index();
+			redirect($this->index());
 		}
+
 	}
 	
 	function credentials()
@@ -113,10 +123,12 @@ class User extends CI_Controller
 			{
 
 				$session_data = $this->session->userdata('is_userlogged_in');
+				$will_id=$this->user_model->get_will_id($log_id);
 
-$session_data['user_id'] = $log_id;
+				$session_data['user_id'] = $log_id;
+				$session_data['will_id'] = $will_id;
 
-$this->session->set_userdata("is_userlogged_in", $session_data);
+				$this->session->set_userdata("is_userlogged_in", $session_data);
 				
 				//$data = array(
 				//'email' => $email,	
@@ -152,7 +164,6 @@ $this->session->set_userdata("is_userlogged_in", $session_data);
 	{
 		$email = $this->input->post('email');
 
-		$this->load->model('user_model');
 		if($this->user_model->forgot_pass($email))
 		{
 			$message = base_url()."user/reset_pass?email=".$email.'&ui='.md5(uniqid());
@@ -224,11 +235,9 @@ $this->session->set_userdata("is_userlogged_in", $session_data);
 		{
 			$pass = md5($this->input->post('password'));
 			$newpass = md5($this->input->post('new_password'));
-			$this->load->model('user_model');
-			
+					
 			if($this->user_model->current($pass))
 			{
-				$this->load->model('user_model');
 				if($this->user_model->change_pass($newpass))
 				{
 					$this->load->view('user_page');

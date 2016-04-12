@@ -18,15 +18,17 @@
 			
 			<input type="hidden" name="id" value="<?php echo set_value('id',$this->form_data->id); ?>"/>
 			<tr>
-				<td valign="top">Name<span style="color:red;">*</span></td>
+				<td valign="top">Property Name<span style="color:red;">*</span></td>
 				<td><input type="text" name="name" class="text" value="<?php echo set_value('name',$this->form_data->name); ?>"/>
 <?php echo form_error('name'); ?>
 				</td>
 			</tr>
 			<tr>
 				<td valign="top">Comments<span style="color:red;">*</span></td>
-				<td><input type="text" name="comments" class="text" value="<?php echo set_value('comments',$this->form_data->comments); ?>"/>
-<?php echo form_error('name'); ?>
+				<td><textarea rows="4" cols="30" name="comments" class="text"> <?php echo set_value('comments',$this->form_data->comments); ?> </textarea>
+
+				
+<?php echo form_error('comments'); ?>
 				</td>
 			</tr>
 

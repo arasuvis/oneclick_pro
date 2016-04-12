@@ -14,7 +14,7 @@
 <body>
 
 	<div class="content">
-		<h1><?php echo $title; ?></h1>
+		<h1><?php echo  $title; echo $families->relationship; ?></h1>
 		<?php echo $message; ?>
 		<form method="post" action="<?php echo $action; ?>">
 		<div class="data">
@@ -29,13 +29,15 @@
 			</tr>
 			<tr>
 			<td valign="top">Relationship<span style="color:red;">*</span></td>
-			<td><select name="relationship">
+
+			<td><select name="relationship" >
 			<option value=""> Select Relationship</option>
-					<?php foreach($rel as $relation) {  ?>
+
+					<?php  foreach($rel as $relation) {  ?>
 			
-  				<option value="<?php echo $relation->name; ?>"> <?php echo $relation->name; ?> 
-  				</option>
-  				<?php } ?>
+  				  <option <?php if(isset($families->relationship)) if($families->relationship == $relation->name) { echo "selected";} ?> value="<?php echo $relation->name; ?>"> <?php echo $relation->name; ?>  
+  			 </option> 
+  				<?php } ?> 
  			</select>				
 <?php echo form_error('relationship'); ?>
 				</td>
@@ -43,7 +45,7 @@
 			<tr>
 				<td valign="top">Date of Birth<span style="color:red;">*</span></td>
 				
-				<td><input class="inputDate" name="dob" id="datepicker"  />
+				<td><input class="inputDate" name="dob" id="datepicker"  value="<?php echo set_value('dob',$this->form_data->dob); ?>" />
 					
 <?php echo form_error('dob'); ?>
 				</td>
@@ -57,7 +59,7 @@
 <?php echo form_error('marital_status'); ?>
 				</td>
 			</tr>
-			<tr>
+			
 			<tr>
 				<td valign="top">Status<span style="color:red;">*</span></td>
 				<td><input checked type="radio" name="status" class="text" value="Alive"/>Alive

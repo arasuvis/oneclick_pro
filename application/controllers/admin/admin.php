@@ -7,6 +7,7 @@ class Admin extends CI_Controller
 		parent::__construct(); 
 		$this->load->library('session');
 		session_start();
+		$this->load->model('admin/messages_model');
 	}
 
 	/**** Start Login ****/

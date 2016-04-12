@@ -2,6 +2,14 @@
 
 class Create extends CI_Controller {
 
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->model('admin/relations_model');
+		$this->load->model('admin/property_type_model');
+		$this->load->model('admin/ownership_model');
+		$this->load->model('admin/messages_model');
+	}
 
 	public function index()
 	{

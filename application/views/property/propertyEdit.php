@@ -9,7 +9,8 @@
 
 </head>
 <body>
-	<div class="content">
+
+		<div class="content">
 		<h1><?php echo $title; ?></h1>
 		<?php echo $message; ?>
 		<form method="post" action="<?php echo $action; ?>">
@@ -18,15 +19,25 @@
 			
 			<input type="hidden" name="id" value="<?php echo set_value('id',$this->form_data->id); ?>"/>
 			<tr>
-				<td valign="top">Name<span style="color:red;">*</span></td>
-				<td><input type="text" name="name" class="text" value="<?php echo set_value('name',$this->form_data->name); ?>"/>
-<?php echo form_error('name'); ?>
+				<td valign="top">Property Type<span style="color:red;">*</span></td>
+				<td><select name="name" >
+					<option value=""> Select Property Type</option>
+
+					<?php  foreach($property_type as $property) {  ?>
+			
+  				  <option <?php  if($person->name ==  $property->prop_id) echo "selected"; ?> value="<?php echo $property->prop_id; ?>"> <?php echo $property->name; ?>  
+  			 </option> 
+  				<?php } ?> 
+ 			</select>		
+			<?php echo form_error('name'); ?>
 				</td>
 			</tr>
 			<tr>
 				<td valign="top">Address<span style="color:red;">*</span></td>
-				<td><input type="text" name="address" class="text" value="<?php echo set_value('address',$this->form_data->address); ?>"/>
-<?php echo form_error('name'); ?>
+				<td>
+					<textarea rows="4" cols="30" name="address" class="text"> <?php echo set_value('address',$this->form_data->address); ?> </textarea>
+
+				<?php echo form_error('address'); ?>
 				</td>
 			</tr>
 
@@ -53,8 +64,16 @@
 
 			<tr>
 				<td valign="top">Nature Of Ownership<span style="color:red;">*</span></td>
-				<td><input type="text" name="nature_of_ownership" class="text" value="<?php echo set_value('nature_of_ownership',$this->form_data->nature_of_ownership); ?>"/>
-<?php echo form_error('name'); ?>
+				<td><select name="nature_of_ownership" >
+					<option value=""> Select Ownership</option>
+
+					<?php  foreach($ownership as $owner) {  ?>
+			
+  				  <option <?php if(isset($person->nature_of_ownership)) if($owner->own_id == $person->nature_of_ownership) echo "selected"; ?> value="<?php echo $owner->own_id; ?>"> <?php echo $owner->name; ?>  
+  			 </option> 
+  				<?php } ?> 
+ 			</select>		
+			<?php echo form_error('nature_of_ownership'); ?>
 				</td>
 			</tr>
 

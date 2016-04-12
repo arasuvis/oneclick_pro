@@ -12,7 +12,8 @@ class Property extends CI_Controller
 		$this->load->helper('url');		
 		// load model
 		$this->load->model('property_model','',TRUE);
-
+		$this->load->model('admin/property_type_model');
+		$this->load->model('admin/ownership_model');
 
 	}
 	
@@ -38,8 +39,9 @@ class Property extends CI_Controller
 		$i = 0 + $offset;
 		foreach ($persons as $person)
 		{
+			//echo "<pre>"; print_r($person);
 			$this->table->add_row(++$i, $person->name, $person->address,$person->municipal_number,
-			$person->year_of_purchase,$person->area,$person->nature_of_ownership,
+			$person->year_of_purchase,$person->area,$person->ownership,
 			anchor('property/update/'.$person->Immovable_id,'update',array('class'=>'update',
 			'data-toggle'=>'modal','data-target'=>'#myModal')).' '.
 			anchor('property/delete/'.$person->Immovable_id,'delete',array('class'=>'delete',
@@ -61,6 +63,8 @@ class Property extends CI_Controller
 		// set validation properties
 		$this->_set_rules();
 		
+		$data['property_type'] = $this->property_type_model->get_all_property();
+		$data['ownership'] = $this->ownership_model->get_all_ownership();
 		// set common properties
 		$data['title'] = 'Add new property';
 		$data['message'] = '';
@@ -129,7 +133,9 @@ class Property extends CI_Controller
 		@$this->form_data->year_of_purchase = $person->year_of_purchase;
 		$this->form_data->area = $person->area;
 		$this->form_data->nature_of_ownership = $person->nature_of_ownership;
-		
+		$data['person'] = $person;
+		$data['property_type'] = $this->property_type_model->get_all_property();
+		$data['ownership'] = $this->ownership_model->get_all_ownership();
 		// set common properties
 		$data['title'] = 'Update property';
 		$data['message'] = '';

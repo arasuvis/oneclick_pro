@@ -11,7 +11,7 @@
 <!-- Ionicons -->
 <link rel="stylesheet" href="<?php echo base_url(); ?>css/ionicons.min.css">
   
-<link rel="stylesheet"href="<?php echo base_url();?>plugins/datatables/css/buttons.dataTables.min.css">
+<link rel="stylesheet" href="<?php echo base_url();?>plugins/datatables/css/buttons.dataTables.min.css">
 <link rel="stylesheet" href="<?php echo base_url(); ?>/css/bootstrap.min.css">
 <script src="<?php echo base_url(); ?>js/jquery.min.js"></script>
 <script src="<?php echo base_url(); ?>js/bootstrap.min.js"></script>
@@ -28,24 +28,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="<?php echo base_url(); ?>">Home Page</a>
+      <a class="navbar-brand" href="<?php echo base_url('user/dashboard'); ?>">Home Page</a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-	<!--<ul class="nav navbar-nav">
+	<ul class="nav navbar-nav">
 	 <li class=""><a href="<?php echo base_url(); ?>family">Family</a></li>
-	</ul>-->
-  <ul class="nav navbar-nav">
-   <li class=""><a href="<?php echo base_url(); ?>witness/index">Witness</a></li>
-  </ul>
-	<ul class="nav navbar-nav">
-	 <li class=""><a href="<?php echo base_url(); ?>lawyer/index">Lawyers</a></li>
-	</ul>
-	<ul class="nav navbar-nav">
-	 <li class=""><a href="<?php echo base_url(); ?>doctor">Doctor</a></li>
 	</ul>
 
-      <ul class="nav navbar-nav">
+  <ul class="nav navbar-nav">
       <li class="dropdown">
      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">Property <span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
@@ -56,9 +47,21 @@
           <li><a href="<?php echo base_url(); ?>property/index3">Non allocated Property</a></li>
         </ul>
       </li>
- 	</ul>
+  </ul>
 
- 	<?php  if(isset($this->session->userdata['is_userlogged_in'])) { ?>
+  <ul class="nav navbar-nav">
+   <li class=""><a href="<?php echo base_url(); ?>lawyer/index">Lawyers</a></li>
+  </ul>
+
+  <ul class="nav navbar-nav">
+   <li class=""><a href="<?php echo base_url(); ?>doctor">Doctor</a></li>
+  </ul>
+
+  <ul class="nav navbar-nav">
+   <li class=""><a href="<?php echo base_url(); ?>witness/index">Witness</a></li>
+  </ul>
+	   
+<?php if(isset($this->session->userdata['is_userlogged_in'])) { ?>
 
     <ul class="nav navbar-nav navbar-right">
         <li><a href="<?php echo base_url(); ?>logout">SignOut</a></li>

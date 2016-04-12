@@ -51,7 +51,7 @@
 					<td> <?php echo date("M-d-Y g:i", strtotime($m->date)); ?> </td>
 					<td>
 						 <a href='<?php echo base_url("admin/edit/index/" . $m->id); ?>'><button class='btn btn-success'>Edit</button></a>
-						 <a href='<?php echo base_url("admin/edit/delete/" . $m->id); ?>'><button class='btn btn-danger' onclick = "return delConfirm()">Delete</button></a>
+						 <a href='<?php echo base_url("admin/edit/delete_message/" . $m->id); ?>'><button class='btn btn-danger' onclick = "return delConfirm()">Delete</button></a>
 				    </td>
 				</tr>
 			<?php } ?>

@@ -6,6 +6,7 @@ class Family extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->library(array('table','form_validation'));
+			$this->load->model('family_model');
 	}
 
 	public function index($offset = 0)
@@ -14,24 +15,25 @@ class Family extends CI_Controller
 		/*$tree = $this->config->item('jtree_url');
 		$data['tree_url'] = $tree;
 		$this->load->view('family/index',$data); */
-		$this->load->model('family_model');
+	
 		$family = $this->family_model->get_paged_list()->result();
 		$config['base_url'] = site_url('family/index/');// generate table data
 		$this->load->library('table');
-		    $tmpl = array ( 'table_open'  => 
+		   $tmpl = array ( 'table_open'  => 
 		'<table border="1" cellpadding="2" cellspacing="1" id="example1" class="table table-striped table-bordered">' );
 
     	$this->table->set_template($tmpl);
 
 		//$this->table->set_heading('No', 'Name', 'Relationship', 'DOB', 'Marital Status','Status', 'Actions');
-		$this->table->set_heading('No', 'Name', 'Relationship', 'DOB', 'Marital Status','Status');
+		$this->table->set_heading('No', 'Name', 'Relationship', 'DOB', 'Marital Status','Status','Actions');
 		$i = 0 + $offset;
 		foreach ($family as $fam)
 		{
-			$this->table->add_row(++$i, $fam->name, $fam->relationship, $fam->dob, $fam->marital_status, $fam->status
-			//,anchor('users/family/update/'.$fam->id,'update',array('class'=>'update','data-toggle'=>'modal','data-target'=>'#myModal')).' '.
-			//	anchor('users/family/delete/'.$fam->id,'delete',array('class'=>'delete','onclick'=>"return confirm('Are you sure want to delete this person?')"))
+			$this->table->add_row(++$i, $fam->name, $fam->relationship, $fam->dob, $fam->marital_status, $fam->status,
+			anchor('users/family/update/'.$fam->id,'update',array('class'=>'update','data-toggle'=>'modal','data-target'=>'#myModal')).' '.
+			anchor('users/family/delete/'.$fam->id,'delete',array('class'=>'delete','onclick'=>"return confirm('Are you sure want to delete this person?')"))
 			);
+			
 		}
 		$data['table'] = $this->table->generate();
 
@@ -46,7 +48,7 @@ class Family extends CI_Controller
 		$this->_set_fields();
 		// set validation properties
 		$this->_set_rules();
-		$this->load->model('family_model');
+
 		$data['rel']=$this->family_model->get_relation()->result();
 
 				// set common properties
@@ -75,7 +77,7 @@ class Family extends CI_Controller
 		$this->form_validation->set_rules('name', 'Name', 'trim|required');
 		$this->form_validation->set_rules('relationship', 'Relationship', 'trim|required');
 		$this->form_validation->set_rules('dob', 'Date of Birth', 'trim|required');
-	   $this->form_validation->set_rules('marital_status', 'Marital Status', 'trim|required');
+	  $this->form_validation->set_rules('marital_status', 'Marital Status', 'trim|required');
 		$this->form_validation->set_rules('status', 'Status', 'trim|required');
 
 		
@@ -110,8 +112,8 @@ class Family extends CI_Controller
 			'dob'=>$this->input->post('dob'),
 			'marital_status' => $this->input->post('marital_status'),
 			'status' => $this->input->post('status'));
-			$this->load->model('family_model');
-			 $id = $this->family_model->save($family);
+			
+			$id = $this->family_model->save($family);
 			
 			// set user message
 			$data['message'] = '<div class="success">add new lawyer success</div>';
@@ -125,22 +127,73 @@ class Family extends CI_Controller
 	{
 		// set validation properties
 		$this->_set_rules();
-		
+		$data['rel']=$this->family_model->get_relation()->result();
 		// prefill form values
-		$person = $this->lawyer_model->get_by_id($id)->row();
+		$family = $this->family_model->get_by_id($id)->row();
+		$data['families']= $family;  
 		@$this->form_data->id = $id;
-		$this->form_data->name = $person->name;
-		$this->form_data->address = $person->address;
-		
+		$this->form_data->name = $family->name;
+		$this->form_data->relationship = $family->relationship;
+		$this->form_data->dob = $family->dob;
+		$this->form_data->marital_status = $family->marital_status;
+		$this->form_data->status = $family->status;
+		//print_r($this->form_data;exit;
+
 		// set common properties
 		$data['title'] = 'Update Family';
 		$data['message'] = '';
 		$data['action'] = site_url('users/family/updateFamily');
-		$data['link_back'] = anchor('users/family/index/','Back to list of family',array('class'=>'back'));
+		$data['link_back'] = anchor('users/family/index/','Back to list of persons',array('class'=>'back'));
 	
 		// load view
 		$this->load->view('family/familyEdit', $data);
 	}
 
-	
+	function updateFamily()
+	{
+
+		// set common properties
+		$data['title'] = 'Update family';
+		$data['action'] = site_url('users/family/updateFamily');
+		$data['link_back'] = anchor('users/family/index/','Back to list of family',array('class'=>'back'));
+		
+		// set empty default form field values
+		$this->_set_fields();
+		// set validation properties
+		$this->_set_rules();
+		
+		// run validation
+		if ($this->form_validation->run() == FALSE)
+		{
+			$data['message'] = '';
+		}
+		else
+		{
+			// save data
+			$id = $this->input->post('id');
+			$family = array('name' => $this->input->post('name'),
+							'relationship'=>$this->input->post('relationship'),
+							'dob'=>$this->input->post('dob'),
+							'marital_status' => $this->input->post('marital_status'),
+							'status' => $this->input->post('status'));
+							
+			$this->family_model->update($id,$family);
+			
+			// set user message
+			$data['message'] = '<div class="success">update family success</div>';
+		}
+		
+		// load view
+		//$this->load->view('family/familyEdit', $data);
+		redirect('users/family/index', $data);
+	}
+
+	function delete($id)
+	{
+		// delete person
+		$this->family_model->delete($id);
+		
+		// redirect to person list page
+		redirect('users/family/index/','refresh');
+	}
 }

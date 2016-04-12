@@ -19,9 +19,15 @@ class Property_model extends CI_Model {
 	}
 	
 	public function get_paged_list(){
+		
+		$this->db->select('immovable_propertys.Immovable_id,immovable_propertys.address,immovable_propertys.municipal_number,immovable_propertys.area,immovable_propertys.year_of_purchase,admin_property.name as name,admin_property.prop_id,admin_ownership.name as ownership','admin_ownership.own_id');
+		$this->db->from('immovable_propertys');
+		$this->db->join('admin_property','admin_property.prop_id=immovable_propertys.name','left');
+		$this->db->join('admin_ownership','admin_ownership.own_id=immovable_propertys.nature_of_ownership','left');
 		$this->db->order_by('Immovable_id','asc');
-		//return $this->db->get($this->tbl_property, $limit, $offset);
-		return $this->db->get($this->tbl_property);
+		$query = $this->db->get();
+		
+		return $query;
 	}
 	
 	public function get_by_id($id){

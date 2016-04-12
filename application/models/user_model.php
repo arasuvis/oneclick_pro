@@ -33,6 +33,16 @@ class User_model extends CI_Model
 		}
 	}
 
+
+	function get_will_id($log_id)
+	{
+		$query = $this->db->select_max('will_id')
+				 ->where('user_id',$log_id)
+				 ->get('tbl_will');
+				 
+		return $query->row()->will_id;
+	}
+
 	function forgot_pass($email)
 	{
 		$sql = "select * from user_register where email='$email' ";

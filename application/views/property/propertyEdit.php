@@ -15,7 +15,8 @@
 		<?php echo $message; ?>
 		<form method="post" action="<?php echo $action; ?>">
 		<div class="data">
-		<table>
+		<?php// print_r($person); die();?>
+				<table>
 			
 			<input type="hidden" name="id" value="<?php echo set_value('id',$this->form_data->id); ?>"/>
 			<tr>
@@ -25,11 +26,11 @@
 
 					<?php  foreach($property_type as $property) {  ?>
 			
-  				  <option <?php  if($person->name ==  $property->prop_id) echo "selected"; ?> value="<?php echo $property->prop_id; ?>"> <?php echo $property->name; ?>  
+  				  <option <?php if(isset($person->name)) if($person->name ==  $property->prop_id) echo "selected"; ?> value="<?php echo $property->prop_id; ?>"> <?php echo $property->prop_name; ?>  
   			 </option> 
   				<?php } ?> 
  			</select>		
-			<?php echo form_error('name'); ?>
+			<?php echo form_error('prop_name'); ?>
 				</td>
 			</tr>
 			<tr>
@@ -61,7 +62,7 @@
 <?php echo form_error('name'); ?>
 				</td>
 			</tr>
-
+			
 			<tr>
 				<td valign="top">Nature Of Ownership<span style="color:red;">*</span></td>
 				<td><select name="nature_of_ownership" >
@@ -69,7 +70,7 @@
 
 					<?php  foreach($ownership as $owner) {  ?>
 			
-  				  <option <?php if(isset($person->nature_of_ownership)) if($owner->own_id == $person->nature_of_ownership) echo "selected"; ?> value="<?php echo $owner->own_id; ?>"> <?php echo $owner->name; ?>  
+  				  <option <?php if(isset($person->nature_of_ownership)) if($person->nature_of_ownership == $owner->own_id) echo "selected"; ?> value="<?php echo $owner->own_id; ?>"> <?php echo $owner->own_name; ?>  
   			 </option> 
   				<?php } ?> 
  			</select>		

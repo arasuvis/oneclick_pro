@@ -132,7 +132,6 @@ class Family extends CI_Controller
 		$data['rel']=$this->family_model->get_relation()->result();
 		// prefill form values
 		$family = $this->family_model->get_by_id($id)->row();
-		$data['families']= $family;  
 		@$this->form_data->id = $id;
 		$this->form_data->name = $family->name;
 		$this->form_data->relationship = $family->relationship;
@@ -140,7 +139,8 @@ class Family extends CI_Controller
 		$this->form_data->marital_status = $family->marital_status;
 		$this->form_data->status = $family->status;
 		//print_r($this->form_data;exit;
-
+		
+		$data['families']= $family; 
 		// set common properties
 		$data['title'] = 'Update Family';
 		$data['message'] = '';

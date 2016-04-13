@@ -4,17 +4,27 @@ class User_model extends CI_Model
 {
 	function save_reg($data)
 	{
-		$this->db->insert('user_register',$data);
+		$query = $this->db->insert('user_register',$data);
+					
+		return $this->db->insert_id();
+		
+	}
 
-		$get =  $this->db->get('user_register');
-		if($get)
+	function reg_will_id($id)
+	{
+		$status = 0;
+		$name = "Default Will";
+		$query = $this->db->query("INSERT INTO `tbl_will`(`will_name`,`user_id`, `status`) VALUES ('$name','$id','$status')");
+
+		if($this->db->insert_id())
 		{
-			return true;
+			return $this->db->insert_id();
 		}
 		else
 		{
-			return false;
+			return false; 
 		}
+		
 	}
 
 	function login_valid($email,$password)
@@ -41,6 +51,11 @@ class User_model extends CI_Model
 				 ->get('tbl_will');
 				 
 		return $query->row()->will_id;
+	}
+
+	function get_will()
+	{
+		return $query = $this->db->get('tbl_will');
 	}
 
 	function forgot_pass($email)
@@ -75,7 +90,7 @@ class User_model extends CI_Model
 
 	function current($pass)
 	{
-		$id = $this->session->userdata['id'];
+		$id = $this->session->userdata['is_userlogged_in']['user_id'];
 		$sql = "select * from user_register where user_id='$id'  ";
 		$res = $this->db->query($sql);
 		$password = $res->row()->password;
@@ -91,7 +106,7 @@ class User_model extends CI_Model
 
 	function change_pass($newpass)
 	{
-		$id = $this->session->userdata['id'];
+		$id = $this->session->userdata['is_userlogged_in']['user_id'];
 		$sql = "update user_register set password = '$newpass' where user_id = '$id'  ";
 		$res = $this->db->query($sql);
 		if($res)

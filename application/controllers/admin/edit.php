@@ -112,7 +112,7 @@ class Edit extends CI_Controller {
 
 	public function update_view_property()
 	{
-		$data['entry'] =  $this->property_model->get_entry($this->uri->segment(4, 0));
+		$data['entry'] =  $this->property_type_model->get_entry($this->uri->segment(4, 0));
 		if(!isset($data['entry'][0]) || $data['entry'][0] == ""){
 			echo "error";
 		}
@@ -126,13 +126,14 @@ class Edit extends CI_Controller {
 
 	public function edit_propertye_type()
 	{
+
 		if(
-			$this->input->post('name') != ""
+			$this->input->post('prop_name') != ""
 		)
 		{			
 			$data['id'] = $this->input->post('id');
-			$data['name'] = $this->input->post('name');
-			$this->property_model->update_entry($data);			
+			$data['prop_name'] = $this->input->post('prop_name');
+			$this->property_type_model->update_entry($data);			
 		}
 		else{
 			
@@ -142,7 +143,7 @@ class Edit extends CI_Controller {
 
 	public function delete_propertye_type()
 	{
-		$this->delete('property_model','property_type');	
+		$this->delete('property_type_model','property_type');	
 	}
 
 	public function update_view_ownership()
@@ -162,11 +163,11 @@ class Edit extends CI_Controller {
 	public function edit_ownership()
 	{
 		if(
-			$this->input->post('name') != ""
+			$this->input->post('own_name') != ""
 		)
 		{			
 			$data['id'] = $this->input->post('id');
-			$data['name'] = $this->input->post('name');
+			$data['own_name'] = $this->input->post('own_name');
 			$this->ownership_model->update_entry($data);			
 		}
 		else{

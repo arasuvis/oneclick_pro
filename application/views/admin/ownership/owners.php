@@ -39,7 +39,7 @@
 				<tr>
 				
 					
-					<td> <?php echo $m->name; ?> </td>					
+					<td> <?php echo $m->own_name; ?> </td>					
 					<td> <?php echo date("M-d-Y g:i", strtotime($m->date)); ?> </td>
 					<td>
 						 <a href='<?php echo base_url("admin/edit/update_view_ownership/" . $m->own_id); ?>'><button class='btn btn-success'>Edit</button></a>

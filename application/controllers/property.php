@@ -23,7 +23,7 @@ class Property extends CI_Controller
 	{
 
 		$persons = $this->property_model->get_paged_list()->result();
-		
+		//print_r($persons); die();
 		$config['base_url'] = site_url('property/index');// generate table data
 		$this->load->library('table');
 		
@@ -39,13 +39,9 @@ class Property extends CI_Controller
 		$i = 0 + $offset;
 		foreach ($persons as $person)
 		{
-			//echo "<pre>"; print_r($person);
-			$this->table->add_row(++$i, $person->name, $person->address,$person->municipal_number,
-			$person->year_of_purchase,$person->area,$person->ownership,
-			anchor('property/update/'.$person->Immovable_id,'update',array('class'=>'update',
-			'data-toggle'=>'modal','data-target'=>'#myModal')).' '.
-			anchor('property/delete/'.$person->Immovable_id,'delete',array('class'=>'delete',
-			'onclick'=>"return confirm('Are you sure want to delete this?')"))
+			$this->table->add_row(++$i, $person->name, $person->address, $person->municipal_number, $person->year_of_purchase, $person->area , $person->ownership, 
+				anchor('property/update/'.$person->Immovable_id,'update',array('class'=>'update','data-toggle'=>'modal','data-target'=>'#myModal')).' '.
+				anchor('property/delete/'.$person->Immovable_id,'delete',array('class'=>'delete','onclick'=>"return confirm('Are you sure want to delete this property?')"))
 			);
 		}
 		$data['table'] = $this->table->generate();
@@ -78,8 +74,7 @@ class Property extends CI_Controller
 	function addproperty()
 	{
 		// set common properties
-		$user_id = $this->session->userdata['is_userlogged_in']['user_id'];
-
+		$will_id = $this->session->userdata['is_userlogged_in']['will_id'];
 		$data['title'] = 'Add new person';
 		$data['action'] = site_url('property/addproperty');
 		$data['link_back'] = anchor('property/index/','Back to list',array('class'=>'back'));
@@ -96,9 +91,10 @@ class Property extends CI_Controller
 		}
 		else
 		{
+			//print_r($_POST); die();
 			// save data
 			$property = array('name' => $this->input->post('name'),
-			'user_id' => $user_id,
+			'will_id' => $will_id,
 			'address' => $this->input->post('address'),
 			'municipal_number' => $this->input->post('municipal_number'),
 			'year_of_purchase' => $this->input->post('year_of_purchase'),
@@ -115,17 +111,18 @@ class Property extends CI_Controller
 		}
 		
 		// load view
-		redirect('property/index', $data);
+		redirect('property/index');
 	}
 	
 	
 	function update($id)
 	{
+		//echo $this->uri->segment(3, 0); die();
 		// set validation properties
 		$this->_set_rules();
-		
 		// prefill form values
 		$person = $this->property_model->get_by_id($id)->row();
+		
 		@$this->form_data->id = $id;
 		$this->form_data->name = $person->name;
 		$this->form_data->address = $person->address;
@@ -149,7 +146,7 @@ class Property extends CI_Controller
 	function updatePerson()
 	{
 		// set common properties
-		$user_id = $this->session->userdata['is_userlogged_in']['user_id'];
+		//$user_id = $this->session->userdata['is_userlogged_in']['user_id'];
 
 		$data['title'] = 'Update person';
 		$data['action'] = site_url('property/updatePerson');
@@ -174,8 +171,8 @@ class Property extends CI_Controller
 							'municipal_number' => $this->input->post('municipal_number'),
 							'year_of_purchase' => $this->input->post('year_of_purchase'),
 							'area' => $this->input->post('area'),
-							'nature_of_ownership' => $this->input->post('nature_of_ownership'),
-							'user_id' => $user_id);
+							'nature_of_ownership' => $this->input->post('nature_of_ownership')
+							);
 			$this->property_model->update($id,$person);
 			
 			// set user message
@@ -231,7 +228,7 @@ class Property extends CI_Controller
 	function index2($offset = 0)
 	{
 		$mov_prop = $this->property_model->get_paged_list2()->result();
-		
+		//print_r($mov_prop); die();
 		//echo "<pre>";print_r($persons);die();
 		
 		$config['base_url'] = site_url('property/index2');// generate table data
@@ -284,7 +281,7 @@ class Property extends CI_Controller
 	function addproperty2()
 	{
 		// set common properties
-		$user_id = $this->session->userdata['is_userlogged_in']['user_id'];
+		//$user_id = $this->session->userdata['is_userlogged_in']['user_id'];
 		$data['title'] = 'Add new person';
 		$data['action'] = site_url('property/addproperty2');
 		$data['link_back'] = anchor('property/index2/','Back to list of persons',array('class'=>'back'));
@@ -297,20 +294,19 @@ class Property extends CI_Controller
 		// run validation
 		if ($this->form_validation->run() == FALSE)
 		{
+			echo "error";
 			$data['message'] = '';
 		}
 		else
 		{
 			// save data
 			$mov_property = array('name' => $this->input->post('name'),
-			'user_id' => $user_id,
+			//'user_id' => $user_id,
 			'comments' => $this->input->post('comments'),
 			'created_date' => date("Y-m-d H:i:s"),
 			'modified_date' => date("Y-m-d H:i:s"),
 			);
 			
-			//echo "<pre>";print_r($mov_property);die();
-
 			$id = $this->property_model->save2($mov_property);
 			
 			// set user message
@@ -346,7 +342,7 @@ class Property extends CI_Controller
 	function updatePerson2()
 	{
 		// set common properties
-		$user_id = $this->session->userdata['is_userlogged_in']['user_id'];
+		//$user_id = $this->session->userdata['is_userlogged_in']['user_id'];
 		$data['title'] = 'Update person';
 		$data['action'] = site_url('property/updatePerson2');
 		$data['link_back'] = anchor('property/index2/','Back to list',array('class'=>'back'));
@@ -366,8 +362,7 @@ class Property extends CI_Controller
 			// save data
 			$id = $this->input->post('id');
 			$person = array('name' => $this->input->post('name'),
-							'comments' => $this->input->post('comments'),
-							'user_id' => $user_id);
+							'comments' => $this->input->post('comments'));
 			$this->property_model->update2($id,$person);
 			
 			// set user message
@@ -414,7 +409,7 @@ class Property extends CI_Controller
 	function index3($offset = 0)
 	{
 		$not_prop = $this->property_model->get_paged_list3()->result();
-		
+		print_r($not_prop); die();
 		$config['base_url'] = site_url('property/index3');// generate table data
 		$this->load->library('table');
 		
@@ -425,7 +420,7 @@ class Property extends CI_Controller
 
     	$this->table->set_template($tmp3);
 
-		$this->table->set_heading('No','Membor Name','Reason','Actions');
+		$this->table->set_heading('No','Member Name','Reason','Actions');
 		
 		$i = 0 + $offset;
 		foreach ($not_prop as $person)

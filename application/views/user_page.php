@@ -1,7 +1,22 @@
 
-<?php include('header.php'); ?>
+<body>
 
-<!--<script src="<?php //echo base_url(); ?>plugins/jQuery/jQuery-2.1.4.min.js"></script>
-<link rel = "Stylesheet" type="text/css" href="<?php //echo base_url();?>css/bootstrap.min.css" >
--->
-<?php include('footer.php'); ?>
+	<div class="content">
+		<h1>Manage Will</h1>
+    <!-- Modal HTML -->
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Content will be loaded here from "remote.php" file -->
+            </div>
+        </div>
+    </div>
+  
+</div>
+		
+			<br />
+		<!--<div class="paging"><?php echo $pagination; ?></div>-->
+		<div class="data"><?php echo $table; ?></div>
+	
+		
+	</div>

@@ -17,9 +17,10 @@ class Witness_model extends CI_Model {
 	}
 	
 	public function get_paged_list(){
+		$will_id = $this->session->userdata['is_userlogged_in']['will_id'];
 		$this->db->order_by('witness_id','asc');
-		//return $this->db->get($this->tbl_witness, $limit, $offset);
-		return $this->db->get($this->tbl_witness);
+		return $this->db->where('will_id',$will_id)
+						->get($this->tbl_witness);
 	}
 	
 	public function get_by_id($id){
@@ -27,7 +28,8 @@ class Witness_model extends CI_Model {
 		return $this->db->get($this->tbl_witness);
 	}
 	
-	public function save($person){		
+	public function save($person){	
+		$person['will_id'] = $this->session->userdata['is_userlogged_in']['will_id'] ;	
 		$this->db->insert($this->tbl_witness, $person);
 		return $this->db->insert_id();
 	}

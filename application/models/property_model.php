@@ -19,11 +19,13 @@ class Property_model extends CI_Model {
 	}
 	
 	public function get_paged_list(){
-		
-		$this->db->select('immovable_propertys.Immovable_id,immovable_propertys.address,immovable_propertys.municipal_number,immovable_propertys.area,immovable_propertys.year_of_purchase,admin_property.name as name,admin_property.prop_id,admin_ownership.name as ownership','admin_ownership.own_id');
+		$will_id =  $this->session->userdata['is_userlogged_in']['will_id']; 
+
+		$this->db->select('immovable_propertys.Immovable_id,immovable_propertys.address,immovable_propertys.municipal_number,immovable_propertys.area,immovable_propertys.year_of_purchase,admin_property.prop_name as name,admin_property.prop_id,admin_ownership.own_name as ownership,admin_ownership.own_id');
 		$this->db->from('immovable_propertys');
 		$this->db->join('admin_property','admin_property.prop_id=immovable_propertys.name','left');
 		$this->db->join('admin_ownership','admin_ownership.own_id=immovable_propertys.nature_of_ownership','left');
+		$this->db->where('will_id',$will_id);
 		$this->db->order_by('Immovable_id','asc');
 		$query = $this->db->get();
 		
@@ -31,11 +33,13 @@ class Property_model extends CI_Model {
 	}
 	
 	public function get_by_id($id){
-		$this->db->where('Immovable_id', $id);
-		return $this->db->get($this->tbl_property);
+		return $query =  $this->db->where('Immovable_id', $id)
+		 			->get($this->tbl_property);
+		 			
 	}
 	
-	public function save($person){		
+	public function save($person){	
+		 			
 		$this->db->insert($this->tbl_property, $person);
 		return $this->db->insert_id();
 	}
@@ -62,9 +66,10 @@ class Property_model extends CI_Model {
 	}
 	
 	public function get_paged_list2(){
+		$will_id =  $this->session->userdata['is_userlogged_in']['will_id'];
 		$this->db->order_by('movable_id','asc');
-		//return $this->db->get($this->tbl_property, $limit, $offset);
-		return $this->db->get($this->tbl_property2);
+		return $this->db->where('will_id',$will_id)
+						->get($this->tbl_property2);
 	}
 	
 	public function get_by_id2($id){
@@ -72,7 +77,8 @@ class Property_model extends CI_Model {
 		return $this->db->get($this->tbl_property2);
 	}
 	
-	public function save2($mov_property){		
+	public function save2($mov_property){
+		$mov_property['will_id'] =  $this->session->userdata['is_userlogged_in']['will_id']; 
 		$this->db->insert($this->tbl_property2, $mov_property);
 		return $this->db->insert_id();
 	}
@@ -101,8 +107,8 @@ class Property_model extends CI_Model {
 	}
 	
 	public function get_paged_list3(){
+
 		$this->db->order_by('id','asc');
-		//return $this->db->get($this->tbl_property, $limit, $offset);
 		return $this->db->get($this->tbl_property3);
 	}
 	

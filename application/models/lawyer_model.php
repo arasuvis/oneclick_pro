@@ -17,9 +17,11 @@ class lawyer_model extends CI_Model {
 	}
 	
 	public function get_paged_list(){
+		$will_id = $this->session->userdata['is_userlogged_in']['will_id'];
 		$this->db->order_by('id','asc');
-		//return $this->db->get($this->tbl_lawyer, $limit, $offset);
-		return $this->db->get($this->tbl_lawyer);
+		
+		return $this->db->where('will_id',$will_id)
+						->get($this->tbl_lawyer);
 	}
 	
 	public function get_by_id($id){
@@ -27,12 +29,14 @@ class lawyer_model extends CI_Model {
 		return $this->db->get($this->tbl_lawyer);
 	}
 	
-	public function save($person){		
+	public function save($person){
+		$person['will_id'] = $this->session->userdata['is_userlogged_in']['will_id'] ;		
 		$this->db->insert($this->tbl_lawyer, $person);
 		return $this->db->insert_id();
 	}
 	
 	public function update($id, $person){
+		$person['will_id'] = $this->session->userdata['is_userlogged_in']['will_id'] ;
 		$this->db->where('id', $id);
 		$this->db->update($this->tbl_lawyer, $person);
 	}

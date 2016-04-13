@@ -9,12 +9,6 @@ class User extends CI_Controller
 		$this->load->library('session');
 		$this->load->library('email');
 		$this->load->model('user_model');
-		//echo "<pre>";print_r($this->session->userdata);
-		/*if (isset($this->session->userdata['is_userlogged_in'])) 
-		{
-			redirect(base_url('user/dashboard'));
-		}*/
-
 	}
 
 	function index()
@@ -52,10 +46,12 @@ class User extends CI_Controller
 
 		if($this->form_validation->run() == False)
 		{
+			echo "error"; 
 			$this->load->view('registration');
 		}
 		else
 		{
+
 		$data = array(
 			'fname' => $this->input->post('fname'),
 			'mname' => $this->input->post('mname'),
@@ -68,9 +64,21 @@ class User extends CI_Controller
 			'mobile' => $this->input->post('mobile')
 						);
 		
-		if($this->user_model->save_reg($data))
+		$id = $this->user_model->save_reg($data);
+		
+		if($id)
 		{
-			$this->load->view('homepage');
+			if($this->user_model->reg_will_id($id))
+			{
+			$this->load->view('header_home');
+			$this->load->view('navbar_home');
+			$this->load->view('index_home'); 
+			$this->load->view('footer_home');
+			 }
+			else
+			{
+				$this->load->view('registration');	
+			}
 		}
 		else
 		{
@@ -89,7 +97,9 @@ class User extends CI_Controller
 		//print_r($this->session->userdata['is_userlogged_in']); die();
 		if (isset($this->session->userdata['is_userlogged_in'])) 
 		{
-			$this->load->view('user_page'); 
+			$this->load->library('../controllers/home');
+			$obj = new $this->home();
+			$obj->index();
 		}
 		else
 		{

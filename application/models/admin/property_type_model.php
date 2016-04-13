@@ -1,7 +1,7 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Property_type_model extends CI_Model {
 
-    var $name   = '';
+  //  var $name   = '';
 
     function __construct()
     {
@@ -17,9 +17,8 @@ class Property_type_model extends CI_Model {
     }
 
     function insert_entry($data)
-    {		
-		
-        $this->name = $data['name'];
+    {			
+        $this->prop_name = $data['prop_name'];
         $this->date    = Date('Y-m-d h:i:s');
 		$this->modified_date    = Date('Y-m-d h:i:s');
         $this->db->insert('admin_property', $this);
@@ -28,7 +27,7 @@ class Property_type_model extends CI_Model {
     function update_entry($data)
     {
      
-        $this->name = $data['name'];
+        $this->prop_name = $data['prop_name'];
         $this->date    = Date('Y-m-d h:i:s');
 		$this->modified_date    = Date('Y-m-d h:i:s');
         $this->db->update('admin_property', $this, array('prop_id' => $data['id']));

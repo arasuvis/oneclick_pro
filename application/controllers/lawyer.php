@@ -83,7 +83,6 @@ class Lawyer extends CI_Controller {
 		{
 			// save data
 			$lawyer = array('name' => $this->input->post('name'),
-			'user_id' => 3,
 			'address' => $this->input->post('address'));
 							
 			 $id = $this->lawyer_model->save($lawyer);
@@ -141,8 +140,8 @@ class Lawyer extends CI_Controller {
 			// save data
 			$id = $this->input->post('id');
 			$person = array('name' => $this->input->post('name'),
-							'address' => $this->input->post('address'),
-							'user_id' => 3);
+							'address' => $this->input->post('address')
+							);
 			$this->lawyer_model->update($id,$person);
 			
 			// set user message
@@ -150,7 +149,7 @@ class Lawyer extends CI_Controller {
 		}
 		
 		// load view
-		$this->load->view('lawyer/index', $data);
+		redirect('lawyer/index', $data);
 	}
 	
 	function delete($id)

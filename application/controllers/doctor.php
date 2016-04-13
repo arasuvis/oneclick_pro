@@ -84,8 +84,7 @@ class Doctor extends CI_Controller {
 		{
 			// save data
 			$doctor = array('name' => $this->input->post('name'),
-			'user_id' => $user_id,
-			'address' => $this->input->post('address'));
+				'address' => $this->input->post('address'));
 							
 			 $id = $this->Doctor_model->save($doctor);
 			//exit;
@@ -143,8 +142,8 @@ class Doctor extends CI_Controller {
 			// save data
 			$id = $this->input->post('id');
 			$person = array('name' => $this->input->post('name'),
-							'address' => $this->input->post('address'),
-							'user_id' => $user_id);
+							'address' => $this->input->post('address')
+							);
 			$this->Doctor_model->update($id,$person);
 			
 			// set user message

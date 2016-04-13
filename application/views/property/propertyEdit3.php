@@ -20,7 +20,7 @@
 			
 			
 			<tr>
-				<td valign="top">Select Family Membor<span style="color:red;">*</span></td>
+				<td valign="top">Select Family Member<span style="color:red;">*</span></td>
 				<td>
 			
 				<select name="member_id">

@@ -1,7 +1,7 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Ownership_model extends CI_Model {
 
-    var $name   = '';
+   //var $name   = '';
 
     function __construct()
     {
@@ -19,7 +19,7 @@ class Ownership_model extends CI_Model {
     function insert_entry($data)
     {		
 		
-        $this->name = $data['name'];
+        $this->own_name = $data['own_name'];
         $this->date    = Date('Y-m-d h:i:s');
 		$this->modified_date    = Date('Y-m-d h:i:s');
         $this->db->insert('admin_ownership', $this);
@@ -28,7 +28,7 @@ class Ownership_model extends CI_Model {
     function update_entry($data)
     {
      
-        $this->name = $data['name'];
+        $this->own_name = $data['own_name'];
         $this->date    = Date('Y-m-d h:i:s');
 		$this->modified_date    = Date('Y-m-d h:i:s');
         $this->db->update('admin_ownership', $this, array('own_id' => $data['id']));

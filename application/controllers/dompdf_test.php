@@ -36,7 +36,7 @@ class Dompdf_test extends CI_Controller {
 		// Convert to PDF
 		$this->dompdf->load_html($html);
 		$this->dompdf->render();
-		$this->dompdf->stream("welcome.pdf");
+	//	$this->dompdf->stream("welcome.pdf");
 		
 	}
 }

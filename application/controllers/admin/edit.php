@@ -9,7 +9,8 @@ class Edit extends CI_Controller {
 		$this->load->model('admin/property_type_model');
 		$this->load->model('admin/ownership_model');
 		$this->load->model('admin/messages_model');
-	}
+		$this->load->model('admin/faq_model'); 
+			}
 
 	private function view()
 	{
@@ -180,5 +181,43 @@ class Edit extends CI_Controller {
 	{
 		$this->delete('ownership_model','ownership');
 	}
+
+	/*public function update_faq()
+	{
+		$data['messages'] = $this->faq_model->get_all_faq()->result();
+		//$data['entry'] =  $this->faq_model->get_entry($this->uri->segment(4, 0));
+		echo "<pre>";
+		print_r($data); die();
+		if(!isset($data['entry'][0]) || $data['entry'][0] == ""){
+			echo "error";
+		}
+		else
+		{
+			$data['entry'] = $data['entry'][0];
+			$this->view();
+			$this->load->view('admin/faq/edit_view', $data);
+		}
+	}
+
+	public function edit_faq()
+	{
+		if(
+			$this->input->post('own_name') != ""
+		)
+		{			
+			$data['id'] = $this->input->post('id');
+			$data['own_name'] = $this->input->post('own_name');
+			$this->ownership_model->update_entry($data);			
+		}
+		else{
+			
+		}
+		redirect("admin/create/ownership");
+	}
+
+	public function delete_faq()
+	{
+		$this->delete('ownership_model','ownership');
+	} */
 
 }

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 13, 2016 at 03:37 PM
+-- Generation Time: Apr 14, 2016 at 11:11 AM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -46,6 +46,52 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `admin_category`
+--
+
+CREATE TABLE `admin_category` (
+  `cat_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin_category`
+--
+
+INSERT INTO `admin_category` (`cat_id`, `name`) VALUES
+(1, 'Family'),
+(2, 'Property'),
+(3, 'Lawyer'),
+(4, 'Doctor'),
+(5, 'Withness');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin_faq`
+--
+
+CREATE TABLE `admin_faq` (
+  `faq_id` int(11) NOT NULL,
+  `cat_type_name` int(11) NOT NULL,
+  `question` varchar(255) NOT NULL,
+  `answer` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin_faq`
+--
+
+INSERT INTO `admin_faq` (`faq_id`, `cat_type_name`, `question`, `answer`) VALUES
+(1, 1, 'aaaaaaaaa', 'aaaaaaaaaaaaa'),
+(2, 2, 'bbbbbbbbb', 'bbbbbbbbbbbbbbbbbb'),
+(3, 3, 'ljdajngkwarnss', 'lasdnfaoaobhg'),
+(4, 1, 'dfsfd', 'fdsf'),
+(5, 3, 'lksngielsf;x', 's,d hz;kfdx;l');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `admin_messages`
 --
 
@@ -69,12 +115,8 @@ CREATE TABLE `admin_messages` (
 INSERT INTO `admin_messages` (`id`, `email`, `password`, `contact`, `name`, `phone_number`, `address`, `date`, `modified_date`, `message`) VALUES
 (2, 'vin@gmail.com', 'vin', '', 'VINAY', '9876543210', 'bangalore', '2016-03-22 11:25:41', '2016-03-22 11:25:41', ''),
 (11, 'adel@gmail.com', 'adel', '', 'adel', '9876543211', 'Testing123', '2016-04-09 11:22:36', '2016-04-09 11:22:36', ''),
-(13, 'azdbz@gh.co', 'aaaa', '', 'asv', '9876543211', 'adhzh', '2016-03-22 12:54:02', '2016-03-22 12:54:02', ''),
-(14, 'ram@gmail.com', 'eww', '', 'tgsg', '3445677651', 'ewfgasdgzdg', '2016-04-07 06:37:12', '2016-04-07 06:37:12', ''),
-(15, 'ram@gmail.com', 'aaa', '', 'qwr', '9876543211', 'trgf', '2016-04-07 06:37:39', '2016-04-07 06:37:39', ''),
-(16, 'thiru@gmail.com', 'thiru', '', 'Thiru', '9999999999', 'Testing Address', '2016-04-09 10:36:39', '2016-04-09 10:36:39', ''),
-(17, 'aaa@gmail.com', 'aaa', '', 'dasda', '9876543210', 'sfs', '2016-04-09 10:47:50', '2016-04-09 10:47:50', ''),
-(18, 'a@gmail.com', 'aaa', '', 'dsad', '9876543210', 'dasda', '2016-04-09 11:19:56', '2016-04-09 11:19:56', '');
+(15, 'ram@gmail.com', 'aaa', '', 'Praveen', '9876543211', 'trgf', '2016-04-14 10:31:04', '2016-04-14 10:31:04', ''),
+(16, 'thiru@gmail.com', 'thiru', '', 'Thiru', '9999999999', 'Testing Address', '2016-04-09 10:36:39', '2016-04-09 10:36:39', '');
 
 -- --------------------------------------------------------
 
@@ -159,6 +201,18 @@ INSERT INTO `admin_relations` (`rel_id`, `name`, `date`, `modified_date`) VALUES
 (2, 'Mother', '2016-04-03 00:00:00', '2016-04-20 00:00:00'),
 (3, 'Son', '2016-04-13 00:00:00', '2016-04-13 00:00:00'),
 (4, 'Daughter', '2016-04-20 00:00:00', '2016-04-14 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin_video`
+--
+
+CREATE TABLE `admin_video` (
+  `vid_id` int(11) NOT NULL,
+  `cat_type_id` int(11) NOT NULL,
+  `vedio` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -432,6 +486,18 @@ INSERT INTO `user_register` (`user_id`, `fname`, `mname`, `surname`, `email`, `p
 --
 
 --
+-- Indexes for table `admin_category`
+--
+ALTER TABLE `admin_category`
+  ADD PRIMARY KEY (`cat_id`);
+
+--
+-- Indexes for table `admin_faq`
+--
+ALTER TABLE `admin_faq`
+  ADD PRIMARY KEY (`faq_id`);
+
+--
 -- Indexes for table `admin_messages`
 --
 ALTER TABLE `admin_messages`
@@ -460,6 +526,12 @@ ALTER TABLE `admin_registrations`
 --
 ALTER TABLE `admin_relations`
   ADD PRIMARY KEY (`rel_id`);
+
+--
+-- Indexes for table `admin_video`
+--
+ALTER TABLE `admin_video`
+  ADD PRIMARY KEY (`vid_id`);
 
 --
 -- Indexes for table `familys`
@@ -543,20 +615,30 @@ ALTER TABLE `user_register`
 --
 
 --
+-- AUTO_INCREMENT for table `admin_category`
+--
+ALTER TABLE `admin_category`
+  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `admin_faq`
+--
+ALTER TABLE `admin_faq`
+  MODIFY `faq_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
 -- AUTO_INCREMENT for table `admin_messages`
 --
 ALTER TABLE `admin_messages`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT COMMENT 'id auto increment', AUTO_INCREMENT=19;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT COMMENT 'id auto increment', AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `admin_ownership`
 --
 ALTER TABLE `admin_ownership`
-  MODIFY `own_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `own_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `admin_property`
 --
 ALTER TABLE `admin_property`
-  MODIFY `prop_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `prop_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `admin_registrations`
 --
@@ -566,7 +648,12 @@ ALTER TABLE `admin_registrations`
 -- AUTO_INCREMENT for table `admin_relations`
 --
 ALTER TABLE `admin_relations`
-  MODIFY `rel_id` int(255) NOT NULL AUTO_INCREMENT COMMENT 'id auto increment', AUTO_INCREMENT=5;
+  MODIFY `rel_id` int(255) NOT NULL AUTO_INCREMENT COMMENT 'id auto increment', AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `admin_video`
+--
+ALTER TABLE `admin_video`
+  MODIFY `vid_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `familys`
 --

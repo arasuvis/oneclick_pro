@@ -8,7 +8,8 @@ class Create extends CI_Controller {
 		$this->load->model('admin/relations_model');
 		$this->load->model('admin/property_type_model');
 		$this->load->model('admin/ownership_model');
-		$this->load->model('admin/messages_model');
+		$this->load->model('admin/messages_model');  
+		$this->load->model('admin/faq_model'); 
 	}
 
 	public function index()
@@ -23,7 +24,6 @@ class Create extends CI_Controller {
 
 	public function input(){
 
-		
 		$this->form_validation->set_rules('name','Name','trim|required|alpha');
 		$this->form_validation->set_rules('email','Email','trim|required|valid_email');
 		$this->form_validation->set_rules('password','Password','trim|required');
@@ -73,7 +73,8 @@ class Create extends CI_Controller {
 	}
 	
 	public function insert_relation(){
-			$this->form_validation->set_rules('name','Name','trim|required|alpha');
+
+			$this->form_validation->set_rules('name','Name','trim|required');
 			$this->form_validation->set_error_delimiters('<p class="text-danger">','</p>');
 			if($this->form_validation->run())
 				{
@@ -113,7 +114,7 @@ class Create extends CI_Controller {
 	
 	public function insert_property_type(){
 
-			$this->form_validation->set_rules('prop_name','Name','trim|required|alpha');
+			$this->form_validation->set_rules('prop_name','Name','trim|required');
 			$this->form_validation->set_error_delimiters('<p class="text-danger">','</p>');
 			if($this->form_validation->run())
 				{
@@ -152,7 +153,7 @@ class Create extends CI_Controller {
 
 	
 	public function insert_ownership(){
-			$this->form_validation->set_rules('own_name','Name','trim|required|alpha');
+			$this->form_validation->set_rules('own_name','Name','trim|required');
 			$this->form_validation->set_error_delimiters('<p class="text-danger">','</p>');
 			if($this->form_validation->run())
 				{
@@ -165,6 +166,49 @@ class Create extends CI_Controller {
 					$this->load->view('admin/header');
 				$this->load->view('admin/leftbar');
 				$this->load->view('admin/ownership/create_view');
+				$this->load->view('admin/footer');
+					}
+			}
+
+	public function faq()
+	{
+		$messages = $this->faq_model->get_all_faq()->result();
+		$data['messages'] = $messages;
+		$this->load->view('admin/header', $data);
+		$this->load->view('admin/leftbar', $data);
+		$this->load->view('admin/faq/faqs', $data);
+		$this->load->view('admin/footer', $data);
+	}	
+
+	public function add_faq()
+	{
+		$data['type'] = $this->faq_model->get_all_type()->result();
+		$data['messages'] = "";
+		$this->load->view('admin/header', $data);
+		$this->load->view('admin/leftbar', $data);
+			$this->load->view('admin/faq/create_view');
+			$this->load->view('admin/footer');
+	}	
+
+	public function insert_faq(){
+			$this->form_validation->set_rules('cat_type_name','Type','trim|required');
+			$this->form_validation->set_rules('question','Question','trim|required');
+			$this->form_validation->set_rules('answer','Answer','trim|required');
+
+			$this->form_validation->set_error_delimiters('<p class="text-danger">','</p>');
+			if($this->form_validation->run())
+				{
+					$data['cat_type_name'] = $this->input->post('cat_type_name');
+					$data['question'] = $this->input->post('question');
+					$data['answer'] = $this->input->post('answer');
+					$this->faq_model->insert_entry($data);
+					redirect("admin/create/faq");	
+		
+				}
+				else{
+					$this->load->view('admin/header');
+				$this->load->view('admin/leftbar');
+				$this->load->view('admin/faq/create_view');
 				$this->load->view('admin/footer');
 					}
 			}

@@ -6,13 +6,6 @@
         <h1>
            Manage Ownership
           </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a>
-            </li>
-            <li><a href="#">Ownership</a>
-            </li>	
-           <!-- <li class="active">Data tables</li>-->
-        </ol>
     </section>
 
     <!-- Main content -->
@@ -27,18 +20,19 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         <table id="example1" class="table table-bordered table-striped">
-						<thead>
-                          <tr>			
+						<thead style="font-weight: bold">
+                          <tr>
+                <td>Sr No</td>			
 				<td>Name</td>				
 				<td>Added Date</td>
 				<td>Action</td>
 			</tr>
 			</thead>
 			<tbody>
+            <?php $i=0; ?>
 			<?php foreach($messages as $m){ ?>
 				<tr>
-				
-					
+				    <td><?php echo ++$i; ?></td>
 					<td> <?php echo $m->own_name; ?> </td>					
 					<td> <?php echo date("M-d-Y g:i", strtotime($m->date)); ?> </td>
 					<td>

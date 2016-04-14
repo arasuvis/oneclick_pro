@@ -6,13 +6,6 @@
         <h1>
            Manage Advocates
           </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a>
-            </li>
-            <li><a href="#">Advocates</a>
-            </li>	
-           <!-- <li class="active">Data tables</li>-->
-        </ol>
     </section>  
 
     <!-- Main content -->
@@ -27,10 +20,10 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         <table id="example1" class="table table-bordered table-striped">
-						<thead>
+						<thead style="font-weight: bold">
                           <tr>
-	
-				
+	           
+				<td>Sr No</td>
 				<td>Name</td>
 				<td>Contact</td>
 				<td>Email</td>
@@ -40,10 +33,10 @@
 			</tr>
 			</thead>
 			<tbody>
+            <?php $i=0; ?>
 			<?php foreach($messages as $m){ ?>
 				<tr>
-				
-					
+				    <td><?php echo ++$i; ?>					
 					<td> <?php echo $m->name; ?> </td>
 					<td> <?php echo $m->phone_number; ?> </td>
 					<td> <?php echo $m->email; ?> </td>

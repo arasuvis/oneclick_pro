@@ -12,7 +12,7 @@
 					<div class="form-group">
                       <label for="exampleInputPassword1">Name *</label>
                       <input type="text" required class="form-control" value="<?php echo $entry->name; ?>" name="name" id="name" placeholder="Name">
-                   
+                     
 
                   <div class="box-footer">
                     <button type="submit" class="btn btn-primary">Submit</button>

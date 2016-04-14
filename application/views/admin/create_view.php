@@ -17,7 +17,7 @@ margin-bottom:-15px
                   <div class="box-body">
                   <div class="form-group">
                       <label for="exampleInputPassword1">Name *</label>
-                      <input type="text" class="form-control" name="name" id="name" placeholder="Name">
+                      <input type="text" class="form-control" name="name" id="name" placeholder="Name" >
                        <?php echo form_error('name'); ?>
                     </div>
                     
@@ -34,7 +34,7 @@ margin-bottom:-15px
                     </div>
 					<div class="form-group">
                       <label for="exampleInputPassword1">Mobile Number *</label>
-                      <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Mobile Number">
+                      <input type="number" class="form-control" id="phone_number" name="phone_number" placeholder="Mobile Number">
                       <?php echo form_error('phone_number'); ?>
                     </div>
 					<div class="form-group">

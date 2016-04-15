@@ -45,8 +45,19 @@ class Messages_model extends CI_Model {
     function get_all_entries()
     {
        
-        $query = $this->db->get('admin_messages');
+        $query = $this->db->order_by("id", "desc")
+                          ->get('admin_messages');
         return $query->result();
+    }
+
+    function check_advocate($email)
+    {
+        $query = $this->db->where('email', $email)
+                          ->get('admin_messages');
+     
+       if($query->result())
+       {  return true;}
+        else {  return false; }
     }
 
     function insert_entry($data)

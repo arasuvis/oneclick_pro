@@ -43,7 +43,8 @@
 			<?php } ?>
 </tbody>
                             <tfoot>
-                                  <tr>			
+                                  <tr style="font-weight: bold">
+                    <td>Sr No</td>			
 				<td>Name</td>				
 				<td>Added Date</td>
 				<td>Action</td>

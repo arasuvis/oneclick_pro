@@ -12,10 +12,12 @@ class Relations_model extends CI_Model {
     
     function get_all_relations()
     {       
-        $query = $this->db->get('admin_relations');
+        $query = $this->db->order_by("rel_id", "desc")
+                            ->get('admin_relations');
         return $query->result();
     }
 
+     
     function insert_entry($data)
     {		
 		

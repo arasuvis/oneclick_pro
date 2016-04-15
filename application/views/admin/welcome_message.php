@@ -4,9 +4,10 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-           Manage Advocates
+           Manage Advocate
           </h1>
     </section>  
+
 
     <!-- Main content -->
     <section class="content">
@@ -17,6 +18,17 @@
                     <div class="box-header">
                         <h3 class="box-title"><div> <a href='<?php echo base_url();?>admin/create/index'><button class='btn btn-warning'>Add Advocate</button></a></h3>
                     </div>
+                    <?php if($feedback = $this->session->flashdata('feedback')) : ?>
+  <?php $feedback_color = $this->session->flashdata('feedback_color') ?>
+    <div class="row">
+    <div class="col-lg-6 col-lg-offset-3">
+      <div class="alert alert-dismissible <?php echo $feedback_color ?>">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <?php echo $feedback; ?>
+      </div>
+    </div>
+    </div>
+  <?php endif; ?>
                     <!-- /.box-header -->
                     <div class="box-body">
                         <table id="example1" class="table table-bordered table-striped">
@@ -50,8 +62,8 @@
 			<?php } ?>
 </tbody>
                             <tfoot>
-                                 <tr>
-	
+                                 <tr style="font-weight: bold">
+	            <td>Sr No</td>
 				<td>Name</td>
 				<td>Contact</td>
 				<td>Email</td>

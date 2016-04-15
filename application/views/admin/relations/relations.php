@@ -17,6 +17,7 @@
                     <div class="box-header">
                         <h3 class="box-title"><div> <a href='<?php echo base_url();?>admin/create/add_relation'><button class='btn btn-warning'>Add Relation</button></a></h3>
                     </div>
+
                     <!-- /.box-header -->
                     <div class="box-body">
                         <table id="example1" class="table table-bordered table-striped">
@@ -43,7 +44,8 @@
 			<?php } ?>
 </tbody>
                             <tfoot>
-                                  <tr>			
+                                  <tr style="font-weight: bold">	
+                <td>Sr No</td>		
 				<td>Name</td>				
 				<td>Added Date</td>
 				<td>Action</td>

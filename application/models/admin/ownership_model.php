@@ -12,7 +12,8 @@ class Ownership_model extends CI_Model {
     
     function get_all_ownership()
     {       
-        $query = $this->db->get('admin_ownership');
+        $query = $this->db->order_by("own_id", "desc")
+                            ->get('admin_ownership');
         return $query->result();
     }
 

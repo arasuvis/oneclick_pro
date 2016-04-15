@@ -18,7 +18,8 @@
 		<?php echo $message; ?>
 		<form method="post" action="<?php echo $action; ?>"> 
 		<div class="data">
-		<table>
+	
+ 		<table>
 			
 				<input type="hidden" name="id" value="<?php echo set_value('id',$this->form_data->id); ?>"/>
 			<tr>
@@ -35,7 +36,7 @@
 
 					<?php  foreach($rel as $relation) {  ?>
 			
-  				  <option <?php if(isset($families->relationship)) if($families->relationship == $relation->name) { echo "selected";} ?> value="<?php echo $relation->name; ?>"> <?php echo $relation->name; ?>  
+  				  <option <?php if(isset($families->relationship)) if($families->relationship == $relation->name) { echo "selected";} ?> value="<?php echo $relation->rel_id; ?>"> <?php echo $relation->name; ?>  
   			 </option> 
   				<?php } ?> 
  			</select>				

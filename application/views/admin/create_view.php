@@ -8,6 +8,8 @@ margin-bottom:-15px
  <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 <!-- general form elements -->
+
+
               <div class="box box-primary col-lg-1 col-md-1">
                 <div class="box-header with-border">
                   <h3 class="box-title">Add Advocate</h3>

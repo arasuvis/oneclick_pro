@@ -12,7 +12,8 @@ class Property_type_model extends CI_Model {
     
     function get_all_property()
     {       
-        $query = $this->db->get('admin_property');
+        $query = $this->db->order_by("prop_id", "desc")
+                        ->get('admin_property');
         return $query->result();
     }
 

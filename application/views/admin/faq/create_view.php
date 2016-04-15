@@ -16,18 +16,18 @@
 
                     <?php  foreach($type as $types) {  ?>
       
-                    <option <?php //if(isset($types->name)) if($person->name ==  $property->prop_id) echo "selected"; ?> value="<?php echo $types->cat_id; ?>"> <?php echo $types->name; ?>  
+                    <option value="<?php echo $types->cat_id; ?>"> <?php echo $types->name; ?>  
                    </option> 
                    <?php } ?> 
                     </select> 
                   <?php echo form_error('type_name'); ?>
 
                    <label for="exampleInputPassword1">Question *</label>
-                      <input type="text" class="form-control" name="question" id="question" placeholder="Question">
+                   <textarea class="form-control" name="question" id="question" placeholder="Question">Question</textarea>
                   <?php echo form_error('question'); ?>
 
                    <label for="exampleInputPassword1">Answer *</label>
-                      <input type="text" class="form-control" name="answer" id="answer" placeholder="Answer">
+                   <textarea class="form-control" name="answer" id="answer" placeholder="Answer"> Answer</textarea>
                   <?php echo form_error('answer'); ?>
 
                   <div class="box-footer">

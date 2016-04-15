@@ -182,12 +182,10 @@ class Edit extends CI_Controller {
 		$this->delete('ownership_model','ownership');
 	}
 
-	/*public function update_faq()
+	public function update_faq()
 	{
 		$data['messages'] = $this->faq_model->get_all_faq()->result();
-		//$data['entry'] =  $this->faq_model->get_entry($this->uri->segment(4, 0));
-		echo "<pre>";
-		print_r($data); die();
+		$data['entry'] =  $this->faq_model->get_entry($this->uri->segment(4, 0));
 		if(!isset($data['entry'][0]) || $data['entry'][0] == ""){
 			echo "error";
 		}
@@ -202,22 +200,24 @@ class Edit extends CI_Controller {
 	public function edit_faq()
 	{
 		if(
-			$this->input->post('own_name') != ""
+			$this->input->post('cat_type_name') != "" && $this->input->post('question') != "" && $this->input->post('answer') != "" 
 		)
 		{			
-			$data['id'] = $this->input->post('id');
-			$data['own_name'] = $this->input->post('own_name');
-			$this->ownership_model->update_entry($data);			
+			$id = $this->input->post('faq_id');
+			$data['cat_type_name'] = $this->input->post('cat_type_name');
+			$data['question'] = $this->input->post('question');
+			$data['answer'] = $this->input->post('answer');
+			$this->faq_model->update_entry($id,$data);			
 		}
 		else{
 			
 		}
-		redirect("admin/create/ownership");
+		redirect("admin/create/faq");
 	}
 
 	public function delete_faq()
 	{
-		$this->delete('ownership_model','ownership');
-	} */
+		$this->delete('faq_model','faq');
+	} 
 
 }

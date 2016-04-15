@@ -25,7 +25,8 @@
                 <td>Sr No</td>		
 				<td>Type</td>
                 <td>Question</td>
-                <td>Answer</td>				
+                <td>Answer</td>	
+                <td>Action</td>			
 				<!-- <td>Action</td> -->
 			</tr>
 			</thead>
@@ -37,17 +38,19 @@
 					<td> <?php echo $m->name; ?> </td>	
                     <td> <?php echo $m->question; ?> </td>
                     <td> <?php echo $m->answer; ?> </td>				
-					<!-- <td>
-						 <a href='<?php //echo base_url("admin/edit/update_faq/" . $m->faq_id); ?>'><button class='btn btn-success'>Edit</button></a>
-						 <a href='<?php //echo base_url("admin/edit/delete_faq/" . $m->faq_id); ?>' onClick ="return delConfirm()"><button class=' btn btn-danger'>Delete</button></a>
-				    </td> -->
+					<td>
+						 <a href='<?php echo base_url("admin/edit/update_faq/" . $m->faq_id); ?>'><button class='btn btn-success'>Edit</button></a>
+						 <a href='<?php echo base_url("admin/edit/delete_faq/" . $m->faq_id); ?>' onClick ="return delConfirm()"><button class=' btn btn-danger'>Delete</button></a>
+				    </td>
 				</tr>
 			<?php } ?>
 </tbody>
                             <tfoot>
-                                  <tr>			
-				<td>Name</td>				
-				<td>Added Date</td>
+                                  <tr  style="font-weight: bold">
+                    <td>Sr No</td>		
+				<td>Type</td>
+                <td>Question</td>
+                <td>Answer</td> 
 				<td>Action</td>
 			</tr>
 			

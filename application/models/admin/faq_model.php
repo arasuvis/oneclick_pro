@@ -7,7 +7,7 @@ class Faq_model extends CI_Model
 		$this->db->select('admin_faq.faq_id,admin_faq.cat_type_name,admin_faq.question,admin_faq.answer,admin_category.cat_id,admin_category.name');
 		$this->db->from('admin_faq');
 		$this->db->join('admin_category','admin_category.cat_id=admin_faq.cat_type_name','left');
-		$this->db->order_by('faq_id','asc');
+		$this->db->order_by('faq_id','desc');
 		return $query = $this->db->get();
 	}
 
@@ -26,6 +26,17 @@ class Faq_model extends CI_Model
         $query = $this->db->get('admin_faq');
        	return $query->result();
        }
+
+       function delete_entry($id)
+    {
+        $this->db->delete('admin_faq', array('faq_id' => $id));
+    }
+
+    function update_entry($id,$data)
+    {
+          $this->db->where('faq_id', $id)
+          			->update('admin_faq', $data);
+    }
 }
 
 ?>

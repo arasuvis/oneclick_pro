@@ -21,12 +21,19 @@ class Dompdf_test extends CI_Controller {
 		$this->load->helper('url');		
 		// load model
 		$this->load->model('will_model','',TRUE);
+		$this->load->model('admin/property_type_model');
+		$this->load->model('admin/relations_model');
+	
 	}
 	
 	public function index() {	
 		// Load all views as normal
 		$user_id = 1;
+		$data['rel'] = $this->relations_model->get_all_relations();
+		$data['prop'] = $this->property_type_model->get_all_property();
 		$data['id'] = $this->will_model->get_will_details($user_id);
+		//echo "<pre>";
+		//print_r($data); die();
 		$this->load->view('pdf_view',$data);
 		// Get output html
 		$html = $this->output->get_output();
@@ -39,4 +46,6 @@ class Dompdf_test extends CI_Controller {
 	//	$this->dompdf->stream("welcome.pdf");
 		
 	}
+
+	
 }

@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+s<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Family extends CI_Controller 
 {
@@ -17,6 +17,7 @@ class Family extends CI_Controller
 		$this->load->view('family/index',$data); */
 	
 		$family = $this->family_model->get_paged_list()->result();
+		
 		$config['base_url'] = site_url('family/index/');// generate table data
 		$this->load->library('table');
 		   $tmpl = array ( 'table_open'  => 

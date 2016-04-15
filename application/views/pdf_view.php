@@ -55,9 +55,9 @@ foreach($rel as $r)
 
 	else if( $gender == 'F' && $marital_status == 'Married'  )
 	{
-
+		echo "wife";
 	}
-	
+
 	else 
 	{ 
 		if($father_status == 'Alive'){

@@ -25,7 +25,7 @@ class Create extends CI_Controller {
 
 	public function input(){
 
-		$this->form_validation->set_rules('name','Name','trim|required|alpha|	max_length[30]');
+		$this->form_validation->set_rules('name','Name','trim|required|alpha');
 		$this->form_validation->set_rules('email','Email','trim|required|valid_email');
 		$this->form_validation->set_rules('password','Password','trim|required_	max_length[30]');
 		$this->form_validation->set_rules('phone_number','Mobile Number','trim|required|integer|exact_length[10]');
@@ -83,7 +83,7 @@ class Create extends CI_Controller {
 	
 	public function insert_relation(){
 
-			$this->form_validation->set_rules('name','Name','trim|required|	max_length[30]');
+			$this->form_validation->set_rules('name','Name','trim|required');
 			$this->form_validation->set_error_delimiters('<p class="text-danger">','</p>');
 			if($this->form_validation->run())
 				{ 
@@ -122,7 +122,7 @@ class Create extends CI_Controller {
 	
 	public function insert_property_type(){
 
-			$this->form_validation->set_rules('prop_name','Name','trim|required|	max_length[30]');
+			$this->form_validation->set_rules('prop_name','Name','trim|required');
 			$this->form_validation->set_error_delimiters('<p class="text-danger">','</p>');
 			if($this->form_validation->run())
 				{
@@ -161,7 +161,7 @@ class Create extends CI_Controller {
 
 	
 	public function insert_ownership(){
-			$this->form_validation->set_rules('own_name','Name','trim|required|	max_length[30]');
+			$this->form_validation->set_rules('own_name','Name','trim|required');
 			$this->form_validation->set_error_delimiters('<p class="text-danger">','</p>');
 			if($this->form_validation->run())
 				{

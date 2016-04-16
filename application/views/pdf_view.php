@@ -142,7 +142,16 @@ $mydata = array();
 $name;
 foreach($property_details as $key=>$val)
 {
-	    
+	echo $val['property_id'];
+	    foreach($prop as $pro)
+	    {
+	    	if($pro->prop_id == $val['property_id'])
+	    	{
+	    		$name = $pro->prop_name;
+	    		echo $name;
+	    	} 
+	    }
+	    die();
              $mydata[$val['property_id']][$key]['fam_id']  = $val['fam_id'];
               $mydata[$val['property_id']][$key]['percent']  = $val['percent'];
 

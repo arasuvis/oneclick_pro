@@ -21,8 +21,8 @@ class Ownership_model extends CI_Model {
     {		
 		
         $this->own_name = $data['own_name'];
-        $this->date    = gmdate('Y-m-d h:i:s');
-		$this->modified_date    = gmdate('Y-m-d h:i:s');
+        $this->date    = Date('Y-m-d h:i:s');
+		$this->modified_date    = Date('Y-m-d h:i:s');
         $this->db->insert('admin_ownership', $this);
     }
 
@@ -30,8 +30,8 @@ class Ownership_model extends CI_Model {
     {
      
         $this->own_name = $data['own_name'];
-        $this->date    = gmdate('Y-m-d h:i:s');
-		$this->modified_date    = gmdate('Y-m-d h:i:s');
+        $this->date    = Date('Y-m-d h:i:s');
+		$this->modified_date    = Date('Y-m-d h:i:s');
         $this->db->update('admin_ownership', $this, array('own_id' => $data['id']));
     }
 

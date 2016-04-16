@@ -79,7 +79,7 @@ class Messages_model extends CI_Model {
         $this->name = $data['name'];
 		 $this->phone_number = $data['phone_number'];
         $this->address = $data['address'];
-        $this->date    = gmdate('Y-m-d h:i:s');
+        $this->date    = Date('Y-m-d h:i:s');
     	$this->modified_date    = Date('Y-m-d h:i:s');
         $this->db->insert('admin_messages', $this);
     }

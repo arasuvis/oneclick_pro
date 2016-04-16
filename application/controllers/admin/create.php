@@ -11,6 +11,7 @@ class Create extends CI_Controller {
 		$this->load->model('admin/messages_model');  
 		$this->load->model('admin/faq_model'); 
 		$this->load->library('session');
+		date_default_timezone_set('Asia/Kolkata');
 	}
 
 	public function index()
@@ -26,7 +27,7 @@ class Create extends CI_Controller {
 	public function input(){
 
 		$this->form_validation->set_rules('name','Name','trim|required|callback_alpha_dash_space');
-		$this->form_validation->set_rules('email','Email','trim|required|valid_email|is_unique[admin_messages.email]');
+		$this->form_validation->set_rules('email','Email','trim|required|valid_email');
 		$this->form_validation->set_rules('password','Password','trim|required');
 		$this->form_validation->set_rules('phone_number','Mobile Number','trim|required|integer|exact_length[10]');
 		$this->form_validation->set_error_delimiters('<p class="text-danger">','</p>');
@@ -94,7 +95,7 @@ class Create extends CI_Controller {
 	
 	public function insert_relation(){
 
-			$this->form_validation->set_rules('name','Name','trim|required');
+			$this->form_validation->set_rules('name','Name','trim|required|callback_alpha_dash_space');
 			$this->form_validation->set_error_delimiters('<p class="text-danger">','</p>');
 			if($this->form_validation->run())
 				{ 

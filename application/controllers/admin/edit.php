@@ -10,6 +10,7 @@ class Edit extends CI_Controller {
 		$this->load->model('admin/ownership_model');
 		$this->load->model('admin/messages_model');
 		$this->load->model('admin/faq_model'); 
+		date_default_timezone_set('Asia/Kolkata');
 			}
 
 	private function view()
@@ -45,7 +46,7 @@ class Edit extends CI_Controller {
 	
 	public function input()
 		{
-		$this->form_validation->set_rules('name','Name','trim|required|alpha');
+		$this->form_validation->set_rules('name','Name','trim|required|callback_alpha_dash_space');
 		$this->form_validation->set_rules('email','Email','trim|required|valid_email');
 		$this->form_validation->set_rules('password','Password','trim|required');
 		$this->form_validation->set_rules('phone_number','Mobile Number','trim|required|integer|exact_length[10]');
@@ -59,14 +60,33 @@ class Edit extends CI_Controller {
 			$data['name'] = $this->input->post('name');
 			$data['phone_number'] = $this->input->post('phone_number');
 			$data['address'] = $this->input->post('address');
-			$this->messages_model->update_entry($data);
+			if($this->messages_model->check_advocate($email))
+			{
+
+				$this->session->set_flashdata('feedback', 'Email Id Already Exist');
+				$this->session->set_flashdata('feedback_color', 'alert-danger');
+				//echo 'email id Already Exist'; die();
+			}
+			else if($this->messages_model->check_advocate_ph($phone_number))
+			{
+				$this->session->set_flashdata('feedback', 'Phone Number Already Exist');
+				$this->session->set_flashdata('feedback_color', 'alert-danger');
+			}
+			else {
+			$this->messages_model->update_entry($data); }
+			redirect("admin/admin/index");
 		}
 		else{
 			$this->view();		
 			$this->load->view('admin/edit_view');
 			}
-		redirect("admin/admin/index");
+		
 	}
+
+	function alpha_dash_space($str)
+	{
+    return ( ! preg_match("/^([-a-z_ ])+$/i", $str)) ? False : TRUE;
+	} 
 
 	public function delete_message()
 	{
@@ -92,18 +112,22 @@ class Edit extends CI_Controller {
 	
 	public function edit_relation()
 	{
-		if(
-			$this->input->post('name') != ""
-		)
+		$this->form_validation->set_rules('name','Name','trim|required|callback_alpha_dash_space');
+			$this->form_validation->set_error_delimiters('<p class="text-danger">','</p>');
+		if($this->form_validation->run())
 		{			
 			$data['id'] = $this->input->post('id');
 			$data['name'] = $this->input->post('name');
-			$this->relations_model->update_entry($data);			
+			$this->relations_model->update_entry($data);
+			redirect("admin/create/relation");			
 		}
 		else{
-			
+			$this->load->view('admin/header');
+				$this->load->view('admin/leftbar');
+				$this->load->view('admin/relations/edit_view');
+				$this->load->view('admin/footer');
 		}
-		redirect("admin/create/relation");
+		
 	}
 	
 	public function delete_relation()
@@ -128,18 +152,22 @@ class Edit extends CI_Controller {
 	public function edit_propertye_type()
 	{
 
-		if(
-			$this->input->post('prop_name') != ""
-		)
+		$this->form_validation->set_rules('prop_name','Name','trim|required|callback_alpha_dash_space');
+			$this->form_validation->set_error_delimiters('<p class="text-danger">','</p>');
+			if($this->form_validation->run())
 		{			
 			$data['id'] = $this->input->post('id');
 			$data['prop_name'] = $this->input->post('prop_name');
-			$this->property_type_model->update_entry($data);			
+			$this->property_type_model->update_entry($data);
+			redirect("admin/create/property_type");			
 		}
 		else{
-			
+			$this->load->view('admin/header');
+				$this->load->view('admin/leftbar');
+				$this->load->view('admin/property_type/edit_view');
+				$this->load->view('admin/footer');
 		}
-		redirect("admin/create/property_type");
+		
 	}
 
 	public function delete_propertye_type()
@@ -163,18 +191,22 @@ class Edit extends CI_Controller {
 
 	public function edit_ownership()
 	{
-		if(
-			$this->input->post('own_name') != ""
-		)
+		$this->form_validation->set_rules('own_name','Name','trim|required');
+			$this->form_validation->set_error_delimiters('<p class="text-danger">','</p>');
+			if($this->form_validation->run())
 		{			
 			$data['id'] = $this->input->post('id');
 			$data['own_name'] = $this->input->post('own_name');
-			$this->ownership_model->update_entry($data);			
+			$this->ownership_model->update_entry($data);
+			redirect("admin/create/ownership");			
 		}
 		else{
-			
+			$this->load->view('admin/header');
+				$this->load->view('admin/leftbar');
+				$this->load->view('admin/ownership/edit_view');
+				$this->load->view('admin/footer');
 		}
-		redirect("admin/create/ownership");
+		
 	}
 
 	public function delete_ownership()

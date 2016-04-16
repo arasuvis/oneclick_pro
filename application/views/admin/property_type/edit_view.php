@@ -11,9 +11,9 @@
                   <div class="box-body">
 					<div class="form-group">
                       <label for="exampleInputPassword1">Name *</label>
-                      <input type="text" class="form-control" value="<?php echo $entry->prop_name; ?>" name="prop_name" id="name" placeholder="Name">
+                      <input type="text" class="form-control" value="<?php if(isset($entry->prop_name)) echo $entry->prop_name; ?>" name="prop_name" id="name" placeholder="Name">
                    
-
+                      <?php echo form_error('prop_name'); ?> 
                   <div class="box-footer">
                     <button type="submit" class="btn btn-primary">Submit</button>
                   </div>

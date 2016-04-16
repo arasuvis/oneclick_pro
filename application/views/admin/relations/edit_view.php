@@ -11,8 +11,8 @@
                   <div class="box-body">
 					<div class="form-group">
                       <label for="exampleInputPassword1">Name *</label>
-                      <input type="text" required class="form-control" value="<?php echo $entry->name; ?>" name="name" id="name" placeholder="Name">
-                     
+                      <input type="text" class="form-control" value="<?php if(isset($entry->name)) echo $entry->name; ?>" name="name" id="name" placeholder="Name">
+                       <?php echo form_error('name'); ?>                    
 
                   <div class="box-footer">
                     <button type="submit" class="btn btn-primary">Submit</button>

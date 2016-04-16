@@ -22,8 +22,8 @@ class Relations_model extends CI_Model {
     {		
 		
         $this->name = $data['name'];
-        $this->date    = gmdate('Y-m-d h:i:s');
-		$this->modified_date    = gmdate('Y-m-d h:i:s');
+        $this->date    = Date('Y-m-d h:i:s');
+		$this->modified_date    = Date('Y-m-d h:i:s');
         $this->db->insert('admin_relations', $this);
     }
 
@@ -31,8 +31,8 @@ class Relations_model extends CI_Model {
     {
      
         $this->name = $data['name'];
-        $this->date    = gmdate('Y-m-d h:i:s');
-		$this->modified_date    = gmdate('Y-m-d h:i:s');
+        $this->date    = Date('Y-m-d h:i:s');
+		$this->modified_date    = Date('Y-m-d h:i:s');
         $this->db->update('admin_relations', $this, array('rel_id' => $data['id']));
     }
 

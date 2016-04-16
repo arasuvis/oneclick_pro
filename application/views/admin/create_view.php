@@ -36,7 +36,7 @@ margin-bottom:-15px
                     </div>
 					<div class="form-group">
                       <label for="exampleInputPassword1">Mobile Number *</label>
-                      <input type="number" class="form-control" id="phone_number" name="phone_number" placeholder="Mobile Number">
+                      <input type="number" class="form-control" id="phone_number" name="phone_number" placeholder="Mobile Number" pattern="\d*" maxlength="5"  >
                       <?php echo form_error('phone_number'); ?>
                     </div>
 					<div class="form-group">
@@ -54,6 +54,7 @@ margin-bottom:-15px
               </div><!-- /.box -->
 <script src = "<?php echo base_url('plugins/jQuery/jQuery-2.1.4.min.js'); ?>"></script>
 <script>      
-$("input").attr("maxlength", 30);
+$("input.form-control").attr("maxlength", 30);
+$("input#phone_number").attr("maxlength", 10);
 </script>
 	

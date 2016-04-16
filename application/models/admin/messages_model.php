@@ -62,7 +62,7 @@ class Messages_model extends CI_Model {
 
     function check_advocate_ph($phone_number)
     {
-        $query = $this->db->where('phone_number', $email)
+        $query = $this->db->where('phone_number', $phone_number)
                           ->get('admin_messages');
      
        if($query->result())
@@ -80,7 +80,7 @@ class Messages_model extends CI_Model {
 		 $this->phone_number = $data['phone_number'];
         $this->address = $data['address'];
         $this->date    = gmdate('Y-m-d h:i:s');
-		$this->modified_date    = gmdate('Y-m-d h:i:s');
+    	$this->modified_date    = Date('Y-m-d h:i:s');
         $this->db->insert('admin_messages', $this);
     }
 
@@ -91,8 +91,8 @@ class Messages_model extends CI_Model {
         $this->name = $data['name'];
 		 $this->phone_number = $data['phone_number'];
         $this->address = $data['address'];
-        $this->date    = gmdate('Y-m-d h:i:s');
-		$this->modified_date    = gmdate('Y-m-d h:i:s');
+        $this->date    = Date('Y-m-d h:i:s');
+		$this->modified_date    = Date('Y-m-d h:i:s');
 		//print_r($data['id']);
 		//exit;
         $this->db->update('admin_messages', $this, array('id' => $data['id']));

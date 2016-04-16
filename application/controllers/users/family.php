@@ -17,7 +17,7 @@ class Family extends CI_Controller
 		$this->load->view('family/index',$data); */
 	
 		$family = $this->family_model->get_paged_list()->result();
-		
+		//echo "<pre>";	print_r($family); die();
 		$config['base_url'] = site_url('family/index/');// generate table data
 		$this->load->library('table');
 		   $tmpl = array ( 'table_open'  => 
@@ -30,7 +30,7 @@ class Family extends CI_Controller
 		$i = 0 + $offset;
 		foreach ($family as $fam)
 		{
-			$this->table->add_row(++$i, $fam->name, $fam->relationship, $fam->dob, $fam->marital_status, $fam->status,
+			$this->table->add_row(++$i, $fam->name, $fam->rel, $fam->dob, $fam->marital_status, $fam->status,
 			anchor('users/family/update/'.$fam->id,'update',array('class'=>'update','data-toggle'=>'modal','data-target'=>'#myModal')).' '.
 			anchor('users/family/delete/'.$fam->id,'delete',array('class'=>'delete','onclick'=>"return confirm('Are you sure want to delete this person?')"))
 			);
@@ -52,7 +52,7 @@ class Family extends CI_Controller
 
 
 		$data['rel']=$this->family_model->get_relation()->result();
-		// prefill form values
+				// prefill form values
 	
 				// set common properties
 		$data['title'] = 'Add new Family';

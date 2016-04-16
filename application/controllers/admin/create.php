@@ -25,15 +25,16 @@ class Create extends CI_Controller {
 
 	public function input(){
 
-		$this->form_validation->set_rules('name','Name','trim|required|alpha');
-		$this->form_validation->set_rules('email','Email','trim|required|valid_email');
-		$this->form_validation->set_rules('password','Password','trim|required_	max_length[30]');
+		$this->form_validation->set_rules('name','Name','trim|required|callback_alpha_dash_space');
+		$this->form_validation->set_rules('email','Email','trim|required|valid_email|is_unique[admin_messages.email]');
+		$this->form_validation->set_rules('password','Password','trim|required');
 		$this->form_validation->set_rules('phone_number','Mobile Number','trim|required|integer|exact_length[10]');
 		$this->form_validation->set_error_delimiters('<p class="text-danger">','</p>');
 		
 		if($this->form_validation->run())
 		{
 			$email = $this->input->post('email');
+			$phone_number = $this->input->post('phone_number');
 			$data['email'] = $this->input->post('email');
 			$data['password'] = $this->input->post('password');
 			$data['name'] = $this->input->post('name');
@@ -42,9 +43,14 @@ class Create extends CI_Controller {
 			if($this->messages_model->check_advocate($email))
 			{
 
-				$this->session->set_flashdata('feedback', 'Record Already Exist');
+				$this->session->set_flashdata('feedback', 'Email Id Already Exist');
 				$this->session->set_flashdata('feedback_color', 'alert-danger');
 				//echo 'email id Already Exist'; die();
+			}
+			else if($this->messages_model->check_advocate_ph($phone_number))
+			{
+				$this->session->set_flashdata('feedback', 'Phone Number Already Exist');
+				$this->session->set_flashdata('feedback_color', 'alert-danger');
 			}
 			else{
 				$this->messages_model->insert_entry($data); }
@@ -61,6 +67,11 @@ class Create extends CI_Controller {
 		//redirect("admin/index");
 	}	
 	
+	function alpha_dash_space($str)
+	{
+    return ( ! preg_match("/^([-a-z_ ])+$/i", $str)) ? False : TRUE;
+	} 
+
 	public function relation()
 	{
 		$messages = $this->relations_model->get_all_relations();

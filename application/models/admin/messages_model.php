@@ -60,15 +60,27 @@ class Messages_model extends CI_Model {
         else {  return false; }
     }
 
+    function check_advocate_ph($phone_number)
+    {
+        $query = $this->db->where('phone_number', $email)
+                          ->get('admin_messages');
+     
+       if($query->result())
+       {  return true;}
+        else {  return false; }
+    }
+
     function insert_entry($data)
-    {		
+    {	
+   
+
 		$this->email   = $data['email']; // please read the below note
         $this->password = $data['password'];
         $this->name = $data['name'];
 		 $this->phone_number = $data['phone_number'];
         $this->address = $data['address'];
-        $this->date    = Date('Y-m-d h:i:s');
-		$this->modified_date    = Date('Y-m-d h:i:s');
+        $this->date    = gmdate('Y-m-d h:i:s');
+		$this->modified_date    = gmdate('Y-m-d h:i:s');
         $this->db->insert('admin_messages', $this);
     }
 
@@ -79,8 +91,8 @@ class Messages_model extends CI_Model {
         $this->name = $data['name'];
 		 $this->phone_number = $data['phone_number'];
         $this->address = $data['address'];
-        $this->date    = Date('Y-m-d h:i:s');
-		$this->modified_date    = Date('Y-m-d h:i:s');
+        $this->date    = gmdate('Y-m-d h:i:s');
+		$this->modified_date    = gmdate('Y-m-d h:i:s');
 		//print_r($data['id']);
 		//exit;
         $this->db->update('admin_messages', $this, array('id' => $data['id']));

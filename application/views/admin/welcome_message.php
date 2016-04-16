@@ -1,4 +1,6 @@
-
+<style>
+     
+</style>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -31,7 +33,7 @@
   <?php endif; ?>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <table id="example1" class="table table-bordered table-striped">
+                        <table id="example1" class="table table-bordered table-striped ">
 						<thead style="font-weight: bold">
                           <tr>
 	           
@@ -41,7 +43,7 @@
 				<td>Email</td>
 				<td>Address</td>
 				<td>Added Date</td>
-				<td>Action</td>
+				<td class="nodesign">Action</td>
 			</tr>
 			</thead>
 			<tbody>

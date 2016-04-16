@@ -24,23 +24,35 @@ $value = $id[1];
 //print_r($id);exit;
 //foreach()
 $name_of_father;
+$name_of_husband ;
 $father_status;
-$relation_id;
-
+$husband_status;
+$father_id;
+$husband_id;
 
 foreach($rel as $r)
 			{
 			if($r->name== 'Father')
 				{
-					$relation_id = $r->rel_id;
+					$father_id = $r->rel_id;
+				}
+			if($r->name== 'Husband')
+				{
+					$husband_id = $r->rel_id;
 				}
 			}
+			
 			for($i = 0 ; $i < count($value) ; $i++)
 				{
-					if($value[$i]['relationship'] == $relation_id)
+					if($value[$i]['relationship'] == $father_id)
 					{
 						$name_of_father = $value[$i]['name'];
 						$father_status = $value[$i]['status'];
+					}
+					if($value[$i]['relationship'] == $husband_id)
+					{
+						$name_of_husband = $value[$i]['name'];
+						$husband_status = $value[$i]['status'];
 					}
 				}
 ?>
@@ -55,7 +67,9 @@ foreach($rel as $r)
 
 	else if( $gender == 'F' && $marital_status == 'Married'  )
 	{
-		echo "wife";
+		if($husband_status == 'Alive'){
+			echo ' <b>W/o '.$name_of_husband.'</b>'; }
+			else { echo ' <b>W/o Late '.$name_of_husband.'</b>';  }
 	}
 
 	else 
@@ -119,4 +133,71 @@ for($i = 0 ; $i < count($data) ; $i++)
 } 
 ?>
 </b></p>
+
+<?php 
+//print_r($prop); die();
+echo "<pre>";
+$property_details = $id[4];
+$mydata = array();
+$name;
+foreach($property_details as $key=>$val)
+{
+	    
+             $mydata[$val['property_id']][$key]['fam_id']  = $val['fam_id'];
+              $mydata[$val['property_id']][$key]['percent']  = $val['percent'];
+
+    		 
+}
+
+echo "<pre>";print_r($mydata); die();
+foreach($mydata as $val)
+{
+	foreach($val as $key=>$v)
+	{
+	echo "<pre>";print_r($v);
+	}
+	die();
+}
+
+die();
+for($i=0 ; $i<count($val) ; $i++)
+	{
+	echo "<pre>";print_r($val[$i]);
+	}
+	die();
+/*echo "<pre>";
+print_r($property); die();
+for($i = 0; $i < count($prop); $i++)
+{
+	$p =$prop[$i]->prop_id; 
+	for($j = 0; $j < count($property); $j++)
+	{
+		$q = $property[$j];
+		if($p == $q)
+		{
+			echo $name = $pro->prop_name;
+		echo "<br>";
+		}
+	}
+}
+*/
+
+die();
+
+?>
+<p>Till I am alive, I shall continue to be the sole and absolute owner of all my moveable and immoveable properties/assets/securities etc mentioned herewith above.
+
+To avoid all sorts of false claims, disputes, litigations misunderstanding etc., among my legal heirs, successors, relatives etc., in respect of my said property, after my demise, I thought it is expedient and necessary to make a WILL during my life time which will be operative and given effect to only after my death.
+ 
+In this background, I bequeath and desire that the Property bearing No. <Property 1> owned by me, shall devolve upon and in favour of <Beneficiary Name 1> for <% allocation 1>, <Beneficiary Name 2> for <% allocation 2> etc. to the exclusion all other my legal heirs and successors.
+
+The above sentence should repeat for every property that is being selected. 
+
+However, in case any of the above beneficiary’s predeceases me, I bequeath his/her share in the following manner:
+ 
+Mr./Mrs./Miss <Beneficiary Name 1> allocated <% of allocation by beneficiary>
+Mr./Mrs./Miss <Beneficiary Name 2> allocated <% of allocation by beneficiary>
+Mr./Mrs./Miss <Beneficiary Name 3> allocated <% of allocation by beneficiary>
+
+<We will give an option to the client with a drop down of “Future Properties” with a note saying, “names and % allocation done here” will be used to all future properties the client owns> </p>
 <?php die(); ?>

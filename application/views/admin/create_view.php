@@ -53,7 +53,7 @@ margin-bottom:-15px
                 </form>
               </div><!-- /.box -->
 <script src = "<?php echo base_url('plugins/jQuery/jQuery-2.1.4.min.js'); ?>"></script>
-<script>			
+<script>      
 $("input").attr("maxlength", 30);
 </script>
 	
